@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, type ReactNode } from 'react';
+import { useState, type CSSProperties, type ReactNode } from 'react';
 import { ArrowRight, Beaker, BookOpenCheck, BrainCircuit, Check, Database, FolderGit2 as GithubIcon, Globe2, Mail, ShieldCheck } from 'lucide-react';
 import questionData from '../content/questions.json';
 
@@ -144,7 +144,7 @@ function ResultsChart({ language }: { language: Language }) {
       <div className="score-axis" aria-hidden="true">{scoreGrid.map((level) => <span key={level} style={{ bottom: `${level * 2.45 + 104}px` }}>{level}</span>)}</div>
       <div className="score-grid" aria-hidden="true">{scoreGrid.map((level) => <i key={level} style={{ bottom: `${level}%` }} />)}</div>
       <div className="result-bars">{pilotResults.map((entry, index) => <button type="button" className="result-column" key={`${entry.harness}-${entry.model}`} aria-label={`${index + 1}. ${entry.model}, ${entry.harness}, ${entry.score.toFixed(2)}%, ${entry.points} / 800`}>
-        <div className="bar-track"><div className="result-bar" style={{ height: `${entry.score}%`, background: entry.color }}><strong>{entry.score.toFixed(1)}</strong></div></div>
+        <div className="bar-track"><div className="result-bar" style={{ '--score': `${entry.score}%`, background: entry.color } as CSSProperties}><strong>{entry.score.toFixed(1)}</strong></div></div>
         <div className="result-label"><span className="result-rank">#{index + 1}</span><b>{entry.model}</b><small>{entry.harness}</small></div>
         <div className="result-tip" role="tooltip"><b>{entry.model}</b><span>{entry.harness}</span><strong>{entry.score.toFixed(2)}% <small>{entry.points} / 800</small></strong></div>
       </button>)}</div>
