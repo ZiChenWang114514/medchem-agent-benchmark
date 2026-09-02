@@ -14,18 +14,18 @@ const copy = {
   zh: {
     nav: ['数据概览', '评测结果', '能力覆盖', '架构与评测', '完整样例', '合作方案'], eyebrow: 'MEDICINAL CHEMISTRY · AI TRAINING & EVALUATION',
     title: '专家级药物化学推理数据，\n面向下一代科学智能体',
-    intro: '500 个完整题组、约 2,000 个连续任务和约 10,000 条专家评分标准。数据围绕真实药物研发证据构建，可用于模型训练、强化学习、私有评测与科学智能体测试。',
+    intro: '500 个完整题组、约 2,000 个连续任务和约 10,000 条专家评分标准。数据围绕真实药物研发证据构建，可用于模型训练、强化学习、内部评测与科学智能体测试。',
     cta: '洽谈数据合作', samples: '查看完整样例', proof: '14 个 coding agent 与模型组合均完成同一批 20 个题组；每份回答均有三次独立评分。',
     resultsTitle: 'Pilot20 参赛系统总成绩', resultsText: '同一批 20 个题组；每个系统 20 份有效回答；每份回答由 Luna High 独立评分三次。柱形显示得分率，满分为 800。',
     scoreRate: '得分率', higherBetter: '越高越好', medianNote: '单题三次评分取中位数后汇总',
-    overviewTitle: '为真实药物研发判断而设计', overviewText: '任务要求模型阅读化合物系列、结构证据与 DMPK 数据，提出可绘制的优化方案，识别竞争解释，并在多项约束下完成候选物决策。',
+    overviewTitle: '为真实药物研发判断而设计', overviewText: '任务要求模型阅读化合物系列、结构证据与 DMPK 数据，提出明确、可论证的优化方案，识别竞争解释，并在多项约束下完成候选物决策。',
     coverageTitle: '从数据解释延伸到项目决策', coverageText: '每个题组包含四个相互衔接的任务，可作为独立训练样本，也可组成连续的 Agent 工作流。',
-    architectureTitle: '从固定题目到可复查结果', architectureText: '项目将题目版本、作答环境、模型信息和评分记录贯通保存。潜在合作方既能比较最终成绩，也能检查每一道题的原始回答、评分证据和运行信息。',
+    architectureTitle: '从固定题目到可复查结果', architectureText: '项目将题目版本、作答环境、模型信息和评分记录全链路留存，任何一份成绩都能回溯到原始回答、评分证据与运行信息。',
     architectureNote: '当前公开结果对应 20 题组试验：14 个模型与 Coding Harness 组合均完成作答和三轮独立匿名评分。',
     principlesTitle: '评测可信度来自完整记录',
     sampleTitle: '两个完整题组', sampleText: '以下内容直接取自第 7 和第 11 题组，完整保留四问、题干数据、正向评分项、错误扣分项和证据引用。', sampleNote: '点击题目展开完整题干与评分答案',
     answer: '完整评分答案', positive: '正向评分项', penalty: '错误扣分项', evidence: '证据',
-    cooperationTitle: '按研发目标选择合作方式', cooperationText: '从小规模付费试评开始，也可以直接采购完整数据或训练用途授权。所有方案均可按客户字段转换。',
+    cooperationTitle: '按研发目标选择合作方式', cooperationText: '可以从小规模付费试评开始，也可以直接采购完整数据或训练用途授权。所有方案均可按客户的数据字段与格式交付，支持美元报价与结算。',
     contactTitle: '把你的模型放到真实药物化学任务中检验', contactText: '欢迎模型团队、AI 制药公司、训练数据服务商和科研机构联系。',
     email: '发送合作邮件', github: 'GitHub 项目', sourceLanguage: '', setLabel: '完整题组', tasks: '个任务', footer: 'MedChem Agent Benchmark · Expert-curated data for scientific AI',
     facts: [['14', '模型系统'], ['20', '题组'], ['60', '次评审 / 系统']],
@@ -38,7 +38,7 @@ const copy = {
   en: {
     nav: ['Dataset', 'Results', 'Coverage', 'Architecture', 'Full samples', 'Licensing'], eyebrow: 'MEDICINAL CHEMISTRY · AI TRAINING & EVALUATION',
     title: 'Expert medicinal chemistry reasoning data for the next generation of scientific agents',
-    intro: '500 complete task sets, approximately 2,000 connected tasks, and approximately 10,000 expert rubric entries. Built from real drug-discovery evidence for model training, reinforcement learning, private evaluation, and scientific-agent testing.',
+    intro: '500 complete task sets, ~2,000 connected tasks, and ~10,000 expert-written rubric entries. Built from real drug-discovery evidence for model training, reinforcement learning, private evaluation, and scientific-agent testing.',
     cta: 'Discuss a partnership', samples: 'View full samples', proof: 'All 14 coding-agent and model combinations completed the same 20 task sets, with three independent scoring passes for every answer.',
     resultsTitle: 'Pilot20 overall system scores', resultsText: 'The same 20 task sets were used for every system. Each system produced 20 valid answers, and every answer was independently scored three times by Luna High. Bars show percent of the 800-point maximum.',
     scoreRate: 'Score rate', higherBetter: 'higher is better', medianNote: 'Aggregated after taking the median of three scores per task',
@@ -49,7 +49,7 @@ const copy = {
     principlesTitle: 'Credibility comes from complete records',
     sampleTitle: 'Two complete task sets', sampleText: 'The complete source-language content of Sets 7 and 11 is reproduced below, including all four tasks, data, positive criteria, error penalties, and evidence references.', sampleNote: 'Open each task to read the complete prompt and scoring answer',
     answer: 'Complete scoring answer', positive: 'Positive criteria', penalty: 'Error penalties', evidence: 'Evidence',
-    cooperationTitle: 'Choose the engagement that fits your program', cooperationText: 'Begin with a paid pilot, license the complete collection, or add training rights. Delivery can be mapped to a client-defined schema.',
+    cooperationTitle: 'Choose the engagement that fits your program', cooperationText: 'Begin with a paid pilot, license the complete collection, or add training rights. Delivery can be mapped to a client-defined schema, and USD pricing and invoicing are available on request.',
     contactTitle: 'Test your model on real medicinal chemistry work', contactText: 'We welcome inquiries from model teams, AI drug-discovery companies, expert-data providers, and research organizations.',
     email: 'Email for partnership', github: 'GitHub project', sourceLanguage: 'Full task content is presented in its original Chinese. Professional English adaptation is available with licensed delivery.', setLabel: 'Full task set', tasks: 'tasks', footer: 'MedChem Agent Benchmark · Expert-curated data for scientific AI',
     facts: [['14', 'systems'], ['20', 'sets'], ['60', 'judgements / system']],
@@ -63,7 +63,22 @@ const copy = {
 
 const metrics = [['500', '题组 / task sets'], ['≈2,000', '任务 / tasks'], ['≈10,000', '评分项 / rubric entries'], ['14', '模型组合 / model systems']];
 const coverage = [['SAR', '结构—活性关系 / structure–activity relationships'], ['SBDD', '结构证据与结合模式 / structural evidence'], ['DMPK', '暴露、清除率与代谢 / exposure and metabolism'], ['Lead optimization', '多参数先导优化 / multiparameter optimization'], ['Candidate selection', '候选物优选 / candidate nomination'], ['Experimental design', '竞争假说与判别实验 / discriminating experiments']];
-const plans = [['20-set pilot', '80 tasks · scored evaluation', '¥49,800'], ['100-set license', '≈400 tasks · 12 months', '¥198,000'], ['Complete internal license', '500 sets · 24 months', '¥598,000'], ['Training license', 'SFT / preference / RL use', '¥798,000'], ['Exclusive partnership', 'complete data + custom updates', '¥1,000,000']];
+const plansByLanguage = {
+  zh: [
+    ['试评套餐', '20 题组 · 80 个任务 · 含评分报告', '¥49,800'],
+    ['标准授权', '100 题组 · 约 400 个任务 · 12 个月', '¥198,000'],
+    ['完整内部授权', '500 题组 · 24 个月', '¥598,000'],
+    ['训练用途授权', '支持 SFT / 偏好优化 / 强化学习', '¥798,000'],
+    ['独家合作', '完整数据 + 定制更新', '¥1,000,000'],
+  ],
+  en: [
+    ['20-set pilot', '80 tasks · scored evaluation', 'USD quote'],
+    ['100-set license', '~400 tasks · 12 months', 'USD quote'],
+    ['Complete internal license', '500 sets · 24 months', 'USD quote'],
+    ['Training license', 'SFT / preference / RL use', 'USD quote'],
+    ['Exclusive partnership', 'complete data + custom updates', 'USD quote'],
+  ],
+};
 const workflowRows = {
   zh: [
     { label: '模型作答', note: '统一输入与独立会话', nodes: ['固定题目快照', '作答 Prompt 包', '统一工作流规格', 'Harness + 模型', '原始回答与运行信息'] },
@@ -179,7 +194,7 @@ export default function Home() {
     <section className="section soft" id="coverage"><div className="section-lead compact"><p className="section-number">02 · COVERAGE</p><h2>{t.coverageTitle}</h2><p>{t.coverageText}</p></div><div className="coverage-grid">{coverage.map(([name, description], index) => <div className="coverage-item" key={name}><span>{String(index + 1).padStart(2, '0')}</span><div><strong>{name}</strong><p>{description}</p></div></div>)}</div></section>
     <section className="section architecture" id="workflow"><div className="section-lead"><p className="section-number">03 · ARCHITECTURE & EVALUATION</p><h2>{t.architectureTitle}</h2><p>{t.architectureText}</p><p className="architecture-note"><Check size={15} />{t.architectureNote}</p></div><div className="workflow-shell">{workflowRows[language].map((row, rowIndex) => <div className="flow-lane" key={row.label}><div className="flow-label"><span>0{rowIndex + 1}</span><strong>{row.label}</strong><small>{row.note}</small></div><div className="flow-nodes">{row.nodes.map((node, nodeIndex) => <div className="flow-node" key={node}><span>{node}</span>{nodeIndex < row.nodes.length - 1 && <ArrowRight size={15} aria-hidden="true" />}</div>)}</div></div>)}</div><div className="principles-head"><ShieldCheck size={19} /><h3>{t.principlesTitle}</h3></div><div className="principle-grid">{evaluationPrinciples[language].map(([title, description], index) => <div className="principle" key={title}><span>0{index + 1}</span><strong>{title}</strong><p>{description}</p></div>)}</div></section>
     <section className="section samples" id="samples"><div className="section-lead"><p className="section-number">04 · FULL SAMPLES</p><h2>{t.sampleTitle}</h2><p>{t.sampleText}</p><p className="sample-hint"><BookOpenCheck size={16} />{t.sampleNote}</p></div><div className="sample-stack">{sets.map((set) => <SampleSet key={set.set_id} set={set} language={language} />)}</div></section>
-    <section className="section soft" id="licensing"><div className="section-lead compact"><p className="section-number">05 · LICENSING</p><h2>{t.cooperationTitle}</h2><p>{t.cooperationText}</p></div><div className="pricing-list">{plans.map(([name, description, price], index) => <div className={`price-row ${index === 2 ? 'recommended' : ''}`} key={name}><span className="plan-number">0{index + 1}</span><div><strong>{name}</strong><p>{description}</p></div><b>{price}</b></div>)}</div></section>
+    <section className="section soft" id="licensing"><div className="section-lead compact"><p className="section-number">05 · LICENSING</p><h2>{t.cooperationTitle}</h2><p>{t.cooperationText}</p></div><div className="pricing-list">{plansByLanguage[language].map(([name, description, price], index) => <div className={`price-row ${index === 2 ? 'recommended' : ''}`} key={name}><span className="plan-number">0{index + 1}</span><div><strong>{name}</strong><p>{description}</p></div><b>{price}</b></div>)}</div></section>
     <section className="contact-section"><div><p className="section-number">CONTACT</p><h2>{t.contactTitle}</h2><p>{t.contactText}</p></div><div className="contact-actions"><a href="mailto:wangzc@stu.pku.edu.cn?subject=MedChem%20Agent%20Benchmark%20Partnership"><Mail size={18} />{t.email}</a><a href="https://github.com/ZiChenWang114514/medchem-agent-benchmark" target="_blank" rel="noreferrer"><GithubIcon size={18} />{t.github}</a></div><p className="contact-person"><Globe2 size={15} /> 王子宸 · Zichen Wang · wangzc@stu.pku.edu.cn</p></section>
     <footer><span>{t.footer}</span><span>© 2026 Zichen Wang</span></footer>
   </main>;
