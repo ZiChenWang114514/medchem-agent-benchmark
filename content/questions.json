@@ -1,0 +1,450 @@
+[
+  {
+    "set_id": "ANW-MC-007",
+    "set_number": 7,
+    "title": "Fragment-Based Discovery of SHP2 Allosteric Inhibitors",
+    "doi": "10.1021/acs.jmedchem.3c02118",
+    "questions": [
+      {
+        "question_id": "ANW-MC-007-Q1",
+        "number": 1,
+        "title": "侧链约束与核心甲基的连续 SAR（10 分）",
+        "dimension": "SAR & Data Interpretation；SBDD / Structural Design",
+        "drug_modality": "Small molecule（含 covalent）",
+        "development_stage": "Lead optimization",
+        "difficulty": "L1",
+        "question_type": "SBDD / 结构",
+        "grading_method": "偏自动",
+        "stem_markdown": "本项目聚焦参与受体酪氨酸激酶下游信号调控的蛋白 X，并采用片段发现与结构指导策略开展抑制剂研究。\n \n | 化合物 | 中文结构变化摘要 | 完整原始 SMILES | 靶点 X 生化 IC₅₀（μM） | LE |\n | --- | --- | --- | ---: | ---: |\n | Cmpd A | 柔性丙胺侧链；吡啶氮邻位无甲基 | `ClC(C(Cl)=CC=C1)=C1C2=CNC3=CC(CCCN)=CN=C32` | 2.1 | 0.37 |\n | Cmpd B | 将 Cmpd A 的柔性丙胺约束为亚甲基连接哌嗪；吡啶氮邻位无甲基 | `ClC(C(Cl)=CC=C1)=C1C2=CNC3=CC(CN4CCNCC4)=CN=C32` | 0.41 | 0.36 |\n | Cmpd C | 在 Cmpd B 的吡啶氮邻位引入甲基 | `ClC(C(Cl)=CC=C1)=C1C2=CNC3=CC(CN4CCNCC4)=C(C)N=C32` | 0.078 | 0.39 |\n \n 除特别说明外，生化 IC₅₀ 为两次独立测量的几何均值；Cmpd C 的 IC₅₀ 为 78 nM，SD=5.6 nM，n=5。正文描述了 Cmpd A、C 的蛋白 X–配体共晶观察，SI Table S1 分别列出其 1.89 Å 和 1.84 Å 晶体统计。A 的末端伯胺在极性区域与 F113、T108、E110 形成三条氢键。C 的核心甲基占据由 R111、L216 主链羰基围成的小口袋，R111 羰基靠近该甲基的极化氢；同一结构中，质子化哌嗪氮与 F113 主链羰基及 T108 附近的水分子形成氢键。所给正文和 SI 未提供 Cmpd B 的配对共晶结构。\n \n **结合 A→B 与 B→C 的结构、IC₅₀、LE 和共晶观察，说明两步改造分别带来的 SAR，并指出现有结构能支持哪些解释、哪些关于 Cmpd B 或能量贡献的结论仍不能确定。**",
+        "rubrics": [
+          {
+            "rubric_id": "ANW-MC-007-Q1-R1",
+            "ordinal": 1,
+            "criterion": "明确 Cmpd A 的柔性丙胺被约束为 Cmpd B 的亚甲基连接哌嗪，并把生化 IC₅₀ 2.1→0.41 μM 的约 5 倍改善及 LE 0.37→0.36 分别归给这一步，不把效力提高误写成 LE 同步提高。",
+            "score": 4.0,
+            "scoring_anchor": "侧链约束、效力与 LE",
+            "reference": "DOI 10.1021/acs.jmedchem.3c02118；正文 pp.8–9，Figure 6C、Table 4"
+          },
+          {
+            "rubric_id": "ANW-MC-007-Q1-R2",
+            "ordinal": 2,
+            "criterion": "明确 Cmpd B 在吡啶氮邻位引入甲基得到 Cmpd C，并把生化 IC₅₀ 0.41→0.078 μM 的约 5 倍改善及 LE 0.36→0.39 分别归给这一步；结合 C 共晶说明甲基口袋与本步 SAR 相符，但不要求把该接触写成唯一原因。",
+            "score": 3.0,
+            "scoring_anchor": "吡啶氮邻位甲基、效力与 LE",
+            "reference": "DOI 10.1021/acs.jmedchem.3c02118；正文 pp.8–9，Figure 6D、Table 4"
+          },
+          {
+            "rubric_id": "ANW-MC-007-Q1-R3",
+            "ordinal": 3,
+            "criterion": "A 的伯胺与 F113、T108、E110 形成三条氢键，C 的质子化哌嗪氮与 F113 主链羰基及 T108 附近水分子形成氢键；同时识别所给材料未提供 B 的配对共晶。",
+            "score": 3.0,
+            "scoring_anchor": "把直接结构观察归给实际获得共晶的化合物",
+            "reference": "DOI 10.1021/acs.jmedchem.3c02118；正文 p.8，Figure 6C-D；SI p.S62，Table S1"
+          },
+          {
+            "rubric_id": "ANW-MC-007-Q1-P1",
+            "ordinal": 4,
+            "criterion": "在已经正确报告 A→B 数据后，仍明确宣称环化或提高刚性会在所有系列中提高活性。仅未写适用范围不触发本项。",
+            "score": -3.0,
+            "scoring_anchor": "局部 SAR 普遍化",
+            "reference": "DOI 10.1021/acs.jmedchem.3c02118"
+          },
+          {
+            "rubric_id": "ANW-MC-007-Q1-P2",
+            "ordinal": 5,
+            "criterion": "在已经正确归属 A/C 共晶后，仍把 C 中观察到的甲基接触断言为 B→C 增效或 LE 提升的唯一原因，或由 IC₅₀、LE 与静态结构定量声称已测得具体焓、熵、去溶剂化或结合能贡献。仅未讨论能量来源不触发本项。",
+            "score": -3.0,
+            "scoring_anchor": "唯一因果或能量定量越级",
+            "reference": "DOI 10.1021/acs.jmedchem.3c02118"
+          }
+        ]
+      },
+      {
+        "question_id": "ANW-MC-007-Q2",
+        "number": 2,
+        "title": "芳基杂环化能否改善生化—细胞转化（10 分）",
+        "dimension": "SAR & Data Interpretation；Molecular Design",
+        "drug_modality": "Small molecule（含 covalent）",
+        "development_stage": "Lead optimization",
+        "difficulty": "L2",
+        "question_type": "分子设计 / 合成",
+        "grading_method": "自动 + 半自动",
+        "stem_markdown": "项目随后把 Cmpd L 的 2,3-二氯苯基替换为 4-氯-N2-乙基吲唑，得到 Cmpd M；稠合核心、核心甲基和亚甲基哌嗪保持不变。\n \n | 化合物 | 中文结构变化摘要 | 完整原始 SMILES |\n | --- | --- | --- |\n | Cmpd L | 2,3-二氯苯基；亚甲基哌嗪；核心邻位甲基 | `ClC(C(Cl)=CC=C1)=C1C2=CNC3=CC(CN4CCNCC4)=C(C)N=C32` |\n | Cmpd M | 4-氯-N2-乙基吲唑替换 2,3-二氯苯基；其余片段同 Cmpd L | `ClC(C1=CN(CC)N=C1C=C2)=C2C3=CNC4=CC(CN5CCNCC5)=C(C)N=C43` |\n \n | 参数 | Cmpd L | Cmpd M |\n | --- | ---: | ---: |\n | 靶点 X 生化 IC₅₀ | 0.078 μM；n=5，SD=5.6 nM | 0.037 μM |\n | 细胞 pERK IC₅₀，30 min | 1.6 μM | 0.46 μM |\n | 细胞存活 IC₅₀，6 天 | 5.6 μM | 4.3 μM |\n | Chrom LogD₇.₄ | 3.9 | 2.6 |\n | pKa | 9.10、6.90 | 未报告 |\n \n 三项 IC₅₀ 来自不同检测终点，不能合并为同一种活性读数。题面没有 Cmpd M 的通透、外排、溶解度、细胞内游离浓度或 PK 数据，也没有提供 Cmpd M 的共晶。\n \n **若下一轮只能保留一个芳基方向作为继续优化的参照，你是否会用 Cmpd M 取代 Cmpd L？请根据生化、30 min pERK、6 天细胞存活和 Chrom LogD₇.₄ 的变化，说明这次改造改善了哪一层、尚未解决哪一层，以及现有数据不能支持哪类机制归因。**",
+        "rubrics": [
+          {
+            "rubric_id": "ANW-MC-007-Q2-R1",
+            "ordinal": 1,
+            "criterion": "把 M 作为下一轮芳基方向参照，而不是直接认定为完整候选。",
+            "score": 4.0,
+            "scoring_anchor": "准确说明 Cmpd M 以 4-氯-N2-乙基吲唑替换 Cmpd L 的 2,3-二氯苯基，并作出有条件的取代决定",
+            "reference": "DOI 10.1021/acs.jmedchem.3c02118；正文 pp.9–10，Table 4；官方 CSV"
+          },
+          {
+            "rubric_id": "ANW-MC-007-Q2-R2",
+            "ordinal": 2,
+            "criterion": "生化与 30 min pERK 明显改善，Chrom LogD₇.₄ 降低，而 6 天细胞存活仅小幅变化；不把不同终点合并成笼统的“细胞活性改善”。",
+            "score": 3.0,
+            "scoring_anchor": "分别比较四项结果",
+            "reference": "DOI 10.1021/acs.jmedchem.3c02118；正文 pp.9–10及实验方法"
+          },
+          {
+            "rubric_id": "ANW-MC-007-Q2-R3",
+            "ordinal": 3,
+            "criterion": "综合判断芳基杂环化改善了脂溶性和近端通路读数，但尚未解决长期细胞效应；同时指出通透、外排、细胞内游离暴露等原因尚未测定，或指出 Cmpd M 没有配对共晶。",
+            "score": 3.0,
+            "scoring_anchor": "未解决层面与资料限制",
+            "reference": "DOI 10.1021/acs.jmedchem.3c02118；正文 p.10；SI pp.S48、S62"
+          },
+          {
+            "rubric_id": "ANW-MC-007-Q2-P1",
+            "ordinal": 4,
+            "criterion": "明确断言 LogD₇.₄ 降低已经证明 Cmpd M 的被动通透提高、外排减弱或细胞内游离暴露增加，而题面没有这些测定。",
+            "score": -3.0,
+            "scoring_anchor": "未测递送机制写成定论",
+            "reference": "DOI 10.1021/acs.jmedchem.3c02118"
+          },
+          {
+            "rubric_id": "ANW-MC-007-Q2-P2",
+            "ordinal": 5,
+            "criterion": "明确断言 Cmpd M 已有共晶证明其置换 W5 或采取与 Cmpd 20 相同的结合姿态，并把效应唯一归因于该姿态；所给正文和 SI 没有 Cmpd M 共晶。",
+            "score": -3.0,
+            "scoring_anchor": "虚构 Cmpd M 共晶或姿态",
+            "reference": "DOI 10.1021/acs.jmedchem.3c02118"
+          }
+        ]
+      },
+      {
+        "question_id": "ANW-MC-007-Q3",
+        "number": 3,
+        "title": "W5 水位点是否值得继续投入（10 分）",
+        "dimension": "Chemical Reasoning；SBDD / Structural Design",
+        "drug_modality": "Small molecule（含 covalent）",
+        "development_stage": "Lead optimization",
+        "difficulty": "L3",
+        "question_type": "SBDD / 结构",
+        "grading_method": "偏自动",
+        "stem_markdown": "10 ns 显式溶剂图模型预测，变构隧道 Area 3 的 W5 是相对不稳定、可能适合被配体置换的水位点。下列 IC₅₀ 均来自同一 DiFMUP 荧光生化实验；除另有说明外为两次独立测量的几何均值。\n \n | 化合物 | 中文结构变化摘要 | 完整原始 SMILES |\n | --- | --- | --- |\n | Cmpd A | 2,3-二氯苯基；哌嗪侧链；核心甲基 | `ClC(C(Cl)=CC=C1)=C1C2=CNC3=CC(CN4CCNCC4)=C(C)N=C32` |\n | Cmpd B | 在 Cmpd A 的二氯苯环增加炔丙醇延伸 | `ClC(C(Cl)=C(C#CCO)C=C1)=C1C2=CNC3=CC(CN4CCNCC4)=C(C)N=C32` |\n | Cmpd C | 氯代吲唑的 N2 连接（1H-吡唑-4-基）甲基 | `ClC(C1=CN(CC2=CNN=C2)N=C1C=C3)=C3C4=CNC5=CC(CN6CCNCC6)=C(C)N=C54` |\n | Cmpd D | N2-甲基氯代吲唑 | `ClC(C1=CN(C)N=C1C=C2)=C2C3=CNC4=CC(CN5CCNCC5)=C(C)N=C43` |\n \n | 化合物 | 靶点 X 生化 IC₅₀（μM） | W5 证据状态 |\n | --- | ---: | --- |\n | Cmpd A | 0.078 | 1.84 Å 共晶 8S0K 中可见 W5 |\n | Cmpd B | 0.033 | 正文称该延伸未置换 W5；SI Table S1 未列 Cmpd 19 |\n | Cmpd C | 0.078 | 1.83 Å 共晶 8S0O 直接显示 W5 被置换 |\n | Cmpd D | 0.046 | 正文称其未与目标水形成相互作用；SI Table S1 未列 Cmpd 21 |\n \n **基于这些证据，W5 是否仍应作为优先优化方向？请提出两种能够解释现有结果的竞争解释，并设计一项前瞻性小型配对研究，说明哪些结果分别支持两种解释，以及何种结果仍不足以作出判断。**",
+        "rubrics": [
+          {
+            "rubric_id": "ANW-MC-007-Q3-R1",
+            "ordinal": 1,
+            "criterion": "A 的 8S0K 中 W5 可见；B 未置换 W5、IC₅₀ 为 0.033 μM；C 的 8S0O 直接显示 W5 被置换、IC₅₀ 仍为 0.078 μM；D 未与目标水形成相互作用、IC₅₀ 为 0.046 μM。由此判断论文序列没有建立稳定的 W5 置换—增效关系，并降低其当前优先级。",
+            "score": 3.0,
+            "scoring_anchor": "准确连接证据强度、W5 状态和生化结果",
+            "reference": "DOI 10.1021/acs.jmedchem.3c02118；正文 pp.4660、4663–4664，Figures 5–6、Table 4；SI p.S62"
+          },
+          {
+            "rubric_id": "ANW-MC-007-Q3-R2",
+            "ordinal": 2,
+            "criterion": "W5 置换的有利贡献被 C 的其他结构与相互作用变化抵消；10 ns 模型高估了 W5 对本系列的贡献。明确 A–D 不是严格配对，现有数据不能在两者间作因果选择。科学上等价的具体解释同样合格。",
+            "score": 3.0,
+            "scoring_anchor": "提出两种与具体化合物相连、能够解释同一组结果的竞争解释",
+            "reference": "DOI 10.1021/acs.jmedchem.3c02118；正文 pp.4660、4663–4664"
+          },
+          {
+            "rubric_id": "ANW-MC-007-Q3-R3",
+            "ordinal": 3,
+            "criterion": "两组 W5 置换均伴随更强直接亲和力；两组水状态均分开但置换体直接亲和力均无改善；水状态未分开、组间方向不一致或 Kd/IC₅₀ 方向冲突。",
+            "score": 4.0,
+            "scoring_anchor": "以 C 的 N2-[(1H-吡唑-4-基)甲基]/N2-[(1H-吡唑-3-基)甲基]为明确化合物对，或提出同等具体的同母体小型匹配系列；实际确认各成员的 W5 水状态，同批比较 ITC 或 SPR Kd 与 DiFMUP IC₅₀，并区分三类结果",
+            "reference": "DOI 10.1021/acs.jmedchem.3c02118；正文 Figure 5及p.4670实验方法；SI p.S46；官方 CSV"
+          },
+          {
+            "rubric_id": "ANW-MC-007-Q3-P1",
+            "ordinal": 4,
+            "criterion": "把 10 ns 模型的不稳定水或 Cmpd C 的单个静态共晶写成已经测得的有利自由能或熵，并据此宣称置换 W5 会普遍增效。",
+            "score": -3.0,
+            "scoring_anchor": "模型或静态结构过度解释",
+            "reference": "DOI 10.1021/acs.jmedchem.3c02118"
+          },
+          {
+            "rubric_id": "ANW-MC-007-Q3-P2",
+            "ordinal": 5,
+            "criterion": "把正文对 Cmpd B 或 D 的文字描述写成已有配对沉积共晶的直接观察，或把 SI Table S1 未列出相应结构写成实验已经证明 W5 必然存在或不存在。",
+            "score": -3.0,
+            "scoring_anchor": "虚构配对共晶或误读结构清单",
+            "reference": "DOI 10.1021/acs.jmedchem.3c02118；正文 pp.4663–4664；SI p.S62"
+          }
+        ]
+      },
+      {
+        "question_id": "ANW-MC-007-Q4",
+        "number": 4,
+        "title": "exo/endo-托品烷差向异构体的口服候选选择（10 分）",
+        "dimension": "ADMET / DMPK / Safety；Project Decision & Rigor",
+        "drug_modality": "Small molecule（含 covalent）",
+        "development_stage": "PCC nomination / FTO",
+        "difficulty": "L3",
+        "question_type": "项目决策",
+        "grading_method": "偏专家 rubric",
+        "stem_markdown": "Cmpd A 与 B 只在连接伯胺的桥碳构型上不同。生化、30 min pERK 与 6 天细胞存活为不同终点；小鼠肝微粒体实验使用 1 μM 化合物、双重复；Caco-2 使用 10 μM 化合物、双重复、1 h、37 °C。小鼠 PK 来自雄性小鼠单次 5 mg/kg IV 和 5 mg/kg PO。\n \n | 化合物 | 中文结构变化摘要 | 完整原始 SMILES |\n | --- | --- | --- |\n | Cmpd A | exo-托品烷构型；桥环伯胺外向 | `ClC(C1=CN(C)N=C1C=C2)=C2C3=CNC4=NC(N5[C@H]6C[C@@H](N)C[C@@H]5CC6)=CN=C43` |\n | Cmpd B | endo-托品烷构型；桥环伯胺内向，其余结构与 Cmpd A 相同 | `ClC(C1=CN(C)N=C1C=C2)=C2C3=CNC4=NC(N5[C@H]6C[C@H](N)C[C@@H]5CC6)=CN=C43` |\n \n ### 药效与理化性质\n \n | 参数 | Cmpd A | Cmpd B |\n | --- | ---: | ---: |\n | 靶点 X 生化 IC₅₀ | 0.0081 μM；n=23，SD=1.4 nM | 0.011 μM；n=4，SD=4.1 nM |\n | 细胞 pERK IC₅₀，30 min | 0.025 μM | 0.11 μM |\n | 细胞存活 IC₅₀，6 天 | 2.3 μM | 2.1 μM |\n | pKa | 9.39 | 9.11 |\n | Chrom LogD₇.₄ | 2.16 | 2.21 |\n | 小鼠肝微粒体 t₁/₂ | `>120 min` | `>120 min` |\n \n ### Caco-2 与小鼠 PK\n \n | 参数 | Cmpd A | Cmpd B |\n | --- | ---: | ---: |\n | Caco-2 Papp A→B | `0.10×10⁻⁶ cm/s` | `5.40×10⁻⁶ cm/s` |\n | Caco-2 外排比 | 14.0 | `<1.00` |\n | 小鼠 IV CL | 28.9 mL/min/kg | 8.00 mL/min/kg |\n | 小鼠 Vdss | 8.10 L/kg | 3.10 L/kg |\n | 小鼠 PO AUC | 未报告 | 8460 h·ng/mL |\n | 小鼠 PO t₁/₂ | 未报告 | 4.20 h |\n | 小鼠口服生物利用度 F | `<5.00%` | 84.0% |\n \n Cmpd B 获得 1.94 Å 配体共晶（PDB 8S0S）。正文指出，其伯胺虽然未充分接触 area 2 的极性残基，仍与 F113 主链羰基形成氢键，并与 T108 的氧形成较弱氢键；SI Table S1 未列出 Cmpd A 的配对沉积结构。作者提出，Cmpd B 外排降低可能来自托品烷桥的空间遮蔽，或外排转运体对药效团识别方式的差异；现有资料没有鉴定具体转运体，也没有证明哪一种解释成立。\n \n **若只能选择一个化合物进入下一轮口服体内评价，你会选择哪一个？请综合比较这对差向异构体的药效、Caco-2 转运和小鼠 PK，说明决定及主要取舍，并区分共晶直接支持的结论与仍需验证的递送机制解释。**",
+        "rubrics": [
+          {
+            "rubric_id": "ANW-MC-007-Q4-R1",
+            "ordinal": 1,
+            "criterion": "选择 Cmpd B，准确说明其为 A 在氨基所在桥碳上的 endo 差向异构体；用三项 IC₅₀ 判断主要药效取舍是 30 min pERK 约减弱 4.4 倍，而 6 天细胞效应相当。",
+            "score": 3.0,
+            "scoring_anchor": "候选、差向构型与药效取舍",
+            "reference": "DOI 10.1021/acs.jmedchem.3c02118；正文 Table 5"
+          },
+          {
+            "rubric_id": "ANW-MC-007-Q4-R2",
+            "ordinal": 2,
+            "criterion": "用 B/A 的 Papp、外排比、IV CL 和 F 的配对数据说明递送与体内暴露改善足以改变候选排序；使用 AUC 或口服 t₁/₂ 时识别 A 未报告对应值。",
+            "score": 4.0,
+            "scoring_anchor": "Caco-2 与小鼠 PK 的配对证据",
+            "reference": "DOI 10.1021/acs.jmedchem.3c02118；正文 Table 6"
+          },
+          {
+            "rubric_id": "ANW-MC-007-Q4-R3",
+            "ordinal": 3,
+            "criterion": "准确说明 8S0S 共晶中 B 的伯胺与 F113 羰基及 T108 氧的相互作用，并将相近理化/微粒体终点、共晶直接观察与作者提出但尚未验证的两种外排解释区分开。",
+            "score": 3.0,
+            "scoring_anchor": "直接结构观察与作者解释",
+            "reference": "DOI 10.1021/acs.jmedchem.3c02118；正文 p.8 Figure 6H、p.11 讨论；SI Table S1"
+          },
+          {
+            "rubric_id": "ANW-MC-007-Q4-P1",
+            "ordinal": 4,
+            "criterion": "把 B 的总血浆 AUC 或口服 F 直接等同于游离靶组织暴露，并断言其体内通路抑制或疗效已经优于 A。",
+            "score": -3.0,
+            "scoring_anchor": "总暴露向游离暴露或药效的越级外推",
+            "reference": "DOI 10.1021/acs.jmedchem.3c02118；正文 Table 6、Figure 8"
+          },
+          {
+            "rubric_id": "ANW-MC-007-Q4-P2",
+            "ordinal": 5,
+            "criterion": "把 B 的单一共晶姿态外推为 A 的直接结构事实，或声称该共晶已经证明 Papp、外排比和口服 F 改善来自具体转运体或桥环空间遮蔽。",
+            "score": -3.0,
+            "scoring_anchor": "单一共晶的因果外推",
+            "reference": "DOI 10.1021/acs.jmedchem.3c02118；正文 Figure 6H、Table 6"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "set_id": "ANW-MC-011",
+    "set_number": 11,
+    "title": "匿名药物化学优化题组",
+    "doi": "10.1021/acs.jmedchem.2c01342",
+    "questions": [
+      {
+        "question_id": "ANW-MC-011-Q1",
+        "number": 1,
+        "title": "末端变化与连接链环化的结构–性质关系（10 分）",
+        "dimension": "SAR & Data Interpretation；ADMET / DMPK / Safety",
+        "drug_modality": "Small molecule（含 covalent）",
+        "development_stage": "Lead optimization",
+        "difficulty": "L2",
+        "question_type": "ADMET / DMPK",
+        "grading_method": "自动",
+        "stem_markdown": "**项目背景：** 项目 E 正在优化一类小分子靶点 X 转运抑制剂。靶点 X 参与肿瘤细胞乳酸外排，项目以 SKBr3 细胞乳酸外排实验作为主要结构-活性关系读出，并用靶点 X 与同源转运体 Y 的正交细胞实验、Caco-2、hERG、肝细胞稳定性及药代动力学评价效力、选择性和成药性。该系列保留三唑并嘧啶核心，主要探索连接链、右侧联芳和末端含氮环。除特别说明外，IC₅₀ 越小表示抑制作用越强；不同细胞、读出和单位不得直接换算。\n\n早期研究围绕右侧联芳、末端碱性基团以及三唑并嘧啶核心进行了多轮结构探索。为比较末端变化与连接链变化对该系列的影响，团队在保留柔性氨乙基酰胺连接链的情况下得到化合物 7、8，并进一步合成了以 C 连接手性吡咯烷取代该柔性连接链的化合物 10。\n\n| 化合物 | 连接方式 | 完整 Isomeric SMILES |\n| --- | --- | --- |\n| 7 | 柔性氨乙基酰胺连接链 | `Cc1c(c(n2c(n1)nc(n2)C)C)CCNC(=O)c3cnc(cn3)c4ccc(cc4)CN5CCOCC5` |\n| 8 | 与 7 保持同一连接链；末端由吗啉甲基改为直接连苯环的 N-甲基吗啉 | `Cc1c(c(n2c(n1)nc(n2)C)C)CCNC(=O)c3cnc(cn3)c4ccc(cc4)[C@H]5COCCN5C` |\n| 10 | 以 C 连接的手性吡咯烷取代 7 的柔性氨乙基酰胺；右侧吡嗪-对吗啉甲基苯基保持不变 | `Cc1c(c(n2c(n1)nc(n2)C)C)C[C@@H]3CCN(C3)c4cnc(cn4)c5ccc(cc5)CN6CCOCC6` |\n\n| 化合物 | SKBr3 乳酸外排 pIC₅₀（算术均值或下界） | SI 列示 SEM | 总测定次数 n | 对应 IC₅₀（nM） | logD₇.₄ | LLE | hERG IC₅₀（μM） |\n| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |\n| 7 | 8.16 | 0.083 | 18 | 6.8 | 1.8 | 6.4 | 24 |\n| 8 | 8.20 | 0.043 | 35 | 6.3 | 1.9 | 6.3 | 未报告 |\n| 10 | `>9.42` | 0.051 | 15 | `<0.38` | 2.6 | 6.8 | 1.8 |\n\nSI 在化合物 10 同行列出 SEM 0.051；脚注说明，15 次测定中有 1 次 pIC₅₀`>10`，表中 pIC₅₀ 均值由其余 14 次计算，因此`>9.42`只能作为总体下界，换算后的`<0.38 nM`只能作为 IC₅₀ 上界。作者还报告，10 的相反构型约弱 100 倍，随后考察的其他环状连接链也明显较弱。计算构象采样显示，7 与 10 覆盖不同的构象区域；以三唑并嘧啶核心叠合时，两者均可进入伸展构象簇，10 在核心邻近区域的构象离散程度较小。该结果来自计算采样，现有材料没有这些化合物的配体共晶结构。\n\n**问题：请结合 7、8、10 的结构与数据，判断下一轮优化是否应优先保留并继续探索 C 连接手性吡咯烷，分析连接链环化带来的效力与性质变化，并说明现有证据不能支持哪些确定性结论。**",
+        "rubrics": [
+          {
+            "rubric_id": "ANW-MC-011-Q1-R1",
+            "ordinal": 1,
+            "criterion": "先用 7→8 说明改变右侧末端没有形成明显的效力或 LLE 优势，再准确比较 7→10：乳酸外排 IC₅₀ 上界由 6.8 nM 改善到`<0.38 nM`，同时 logD₇.₄ 从 1.8 升至 2.6、hERG IC₅₀ 从 24 μM 降至 1.8 μM；据此说明优化重点转向连接链后获得强效力，但伴随脂溶性和 hERG 风险。",
+            "score": 4.0,
+            "scoring_anchor": "从右侧末端转向连接链的效力与性质依据",
+            "reference": "正文 p.386 Table 2/Figure 2；SI p.S2 Table S1；Evidence ID E011-004、E011-006、E011-007、E011-027、E011-034"
+          },
+          {
+            "rubric_id": "ANW-MC-011-Q1-R2",
+            "ordinal": 2,
+            "criterion": "使用作者报告的相反构型约弱 100 倍、其他环状连接链明显较弱，以及 SI 中“吡咯烷限制构象柔性、使三唑并嘧啶附近构象变化较小”的计算结果，说明这些观察支持该连接链的构型和环几何与效力相关。",
+            "score": 3.0,
+            "scoring_anchor": "作者的连接链设计假说及支持证据",
+            "reference": "正文 p.385 连接链优化段；SI p.S9 Figure S2；Evidence ID E011-005、E011-024"
+          },
+          {
+            "rubric_id": "ANW-MC-011-Q1-R3",
+            "ordinal": 3,
+            "criterion": "判断 C 连接手性吡咯烷值得作为后续末端基团优化的连接方式保留，同时指出 7→10 包含多处结构变化，计算采样不是配体共晶，现有证据不能确定唯一活性构象、逐原子相互作用或单一增效原因。",
+            "score": 3.0,
+            "scoring_anchor": "保留连接链并限定结论强度",
+            "reference": "正文 pp.385-386；SI p.S9 Figure S2；Evidence ID E011-005、E011-024"
+          },
+          {
+            "rubric_id": "ANW-MC-011-Q1-P1",
+            "ordinal": 4,
+            "criterion": "直接用 hERG IC₅₀ 与 SKBr3 乳酸外排 IC₅₀ 相除，构造未经定义的“治疗窗”或体内安全倍数，并据此宣称 10 已具备可接受的临床安全性。",
+            "score": -3.0,
+            "scoring_anchor": "跨实验体系构造未经验证的安全倍数",
+            "reference": "正文 p.386 Figure 2；Evidence ID E011-006、E011-007"
+          },
+          {
+            "rubric_id": "ANW-MC-011-Q1-P2",
+            "ordinal": 5,
+            "criterion": "把乳酸外排效力、logD₇.₄ 和由二者计算得到的 LLE 当作三项相互独立的证据重复计权，再据此构造没有来源定义的综合优先级。",
+            "score": -3.0,
+            "scoring_anchor": "相关端点重复计权",
+            "reference": "正文 Tables 1–2 对 LLE 的定义；Evidence ID E011-002、E011-004、E011-006"
+          }
+        ]
+      },
+      {
+        "question_id": "ANW-MC-011-Q2",
+        "number": 2,
+        "title": "化合物 10 的多参数缺陷诊断与结构设计（10 分）",
+        "dimension": "Molecular Design；ADMET / DMPK / Safety",
+        "drug_modality": "Small molecule（含 covalent）",
+        "development_stage": "Lead optimization",
+        "difficulty": "L2",
+        "question_type": "分子设计 / 合成",
+        "grading_method": "自动 + 半自动",
+        "stem_markdown": "**项目背景：** 项目 E 正在优化一类小分子靶点 X 转运抑制剂。靶点 X 参与肿瘤细胞乳酸外排，项目以 SKBr3 细胞乳酸外排实验作为主要结构-活性关系读出，并用靶点 X 与同源转运体 Y 的正交细胞实验、Caco-2、hERG、肝细胞稳定性及药代动力学评价效力、选择性和成药性。该系列保留三唑并嘧啶核心，主要探索连接链、右侧联芳和末端含氮环。除特别说明外，IC₅₀ 越小表示抑制作用越强；不同细胞、读出和单位不得直接换算。\n\n团队决定保留化合物 10 的三唑并嘧啶核心和 C 连接手性吡咯烷，下一轮只调整右侧联芳的排列或末端含氮环。化合物 10 的完整 Isomeric SMILES 为：\n\n`Cc1c(c(n2c(n1)nc(n2)C)C)C[C@@H]3CCN(C3)c4cnc(cn4)c5ccc(cc5)CN6CCOCC6`\n\n| SKBr3 乳酸外排 pIC₅₀（算术均值下界） | SI 列示 SEM | 总测定次数 n | 对应 IC₅₀（nM） | logD₇.₄ | LLE | Caco-2 ER | hERG IC₅₀（μM） |\n| ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |\n| `>9.42` | 0.051 | 15 | `<0.38` | 2.6 | 6.8 | 1.1 | 1.8 |\n\n| 大鼠肝细胞 CLint（μL/min/10⁶ cells） | 人肝细胞 CLint（μL/min/10⁶ cells） | 大鼠口服 F（%） | 大鼠 CL（mL/min/kg） |\n| ---: | ---: | ---: | ---: |\n| 13 | 3.4 | 47 | 53 |\n\nSI 在化合物 10 同行列出 SEM 0.051；15 次测定中有 1 次 pIC₅₀`>10`，表中均值由其余 14 次计算，因此`>9.42`只能解释为总体下界，`<0.38 nM`只能解释为 IC₅₀ 上界。正文给出化合物 10 末端吗啉的预测 pKₐ 为 6.0；正文另报告，同系列中性类似物在 hERG 测定中仍有活性。当前材料没有靶点 X 的配体结合结构，不能据此指定残基作用或结合姿态。\n\n**问题：请诊断化合物 10 进入下一轮优化时最需要解决的问题，并在上述可变区域内提出至少三种能够直接画出的具体结构设计；对每种设计分别说明拟改善的参数、最需警惕的不利变化和首轮配对实验，最后给出合成优先顺序。**",
+        "rubrics": [
+          {
+            "rubric_id": "ANW-MC-011-Q2-R1",
+            "ordinal": 1,
+            "criterion": "识别化合物 10 的效力已受测定范围限制，正确把`<0.38 nM`解释为 IC₅₀ 上界，并把 logD₇.₄ 2.6、hERG IC₅₀ 1.8 μM 和大鼠 CL 53 mL/min/kg列为下一轮需要共同处理的问题。",
+            "score": 3.0,
+            "scoring_anchor": "先停止追逐受限效力，再诊断脂溶性、hERG 与清除",
+            "reference": "正文 p.386 Figure 2；SI p.S2 Table S1；Evidence ID E011-006、E011-007、E011-008、E011-027、E011-035"
+          },
+          {
+            "rubric_id": "ANW-MC-011-Q2-R2",
+            "ordinal": 2,
+            "criterion": "提出至少三种能够直接画出的具体结构设计，并保持三唑并嘧啶核心与 C 连接手性吡咯烷不变；三种设计应覆盖末端碱性调节、联芳顺序调整、末端杂环氮原子位置调整等不同假说。满分参考结构为 N-甲基哌嗪替换、吡嗪/苯基换位和末端吡嗪改吡哒嗪；检验同类假说的明确替代结构也可接受。",
+            "score": 4.0,
+            "scoring_anchor": "三种不同、可合成且可判别的右侧结构操作",
+            "reference": "正文 pp.385-387 Figure 2、Table 3 及邻接讨论；官方 CSV rows 10–13；Evidence ID E011-028、E011-036"
+          },
+          {
+            "rubric_id": "ANW-MC-011-Q2-R3",
+            "ordinal": 3,
+            "criterion": "对每种设计分别给出拟改善参数、最主要风险和首轮配对实验，并据此给出合成顺序；实验至少覆盖效力/选择性、logD 或 pKa、hERG、双向 Caco-2，并说明通过后再比较肝细胞 CLint 与大鼠 PK。不得用隐藏的 11–13 结果作为前瞻性结论。",
+            "score": 3.0,
+            "scoring_anchor": "用收益—风险—实验验证循环区分三条假说，并形成可执行顺序",
+            "reference": "正文 pp.385-387；Table 3；Figure 2；Evidence ID E011-003、E011-006、E011-007、E011-008、E011-009、E011-028、E011-036"
+          },
+          {
+            "rubric_id": "ANW-MC-011-Q2-P1",
+            "ordinal": 4,
+            "criterion": "虚构靶点残基作用或配体结合姿态，或在没有论证的情况下改动题面要求保留的核心与手性吡咯烷，使设计无法检验指定的右侧结构假说。",
+            "score": -3.0,
+            "scoring_anchor": "当前材料没有配体结合结构；设计需检验指定的右侧结构假说",
+            "reference": "正文 pp.385-386；SI p.S9 Figure S2；Evidence ID E011-024"
+          },
+          {
+            "rubric_id": "ANW-MC-011-Q2-P2",
+            "ordinal": 5,
+            "criterion": "断言提高碱性或降低表观 logD 必然消除 hERG 风险，却不配对检查效力、选择性、hERG、双向 Caco-2 及后续 DMPK。",
+            "score": -3.0,
+            "scoring_anchor": "中性类似物同样出现 hERG 活性；单项性质变化不能代替多参数验证",
+            "reference": "正文 p.385 优化讨论；Evidence ID E011-036"
+          }
+        ]
+      },
+      {
+        "question_id": "ANW-MC-011-Q3",
+        "number": 3,
+        "title": "高浓度曲线异常的竞争假说与判别路径（10 分）",
+        "dimension": "Chemical Reasoning；Project Decision & Rigor",
+        "drug_modality": "Small molecule（含 covalent）",
+        "development_stage": "Lead optimization",
+        "difficulty": "L3",
+        "question_type": "项目决策",
+        "grading_method": "偏专家 rubric",
+        "stem_markdown": "**项目背景：** 项目 E 正在优化一类小分子靶点 X 转运抑制剂。靶点 X 参与肿瘤细胞乳酸外排，项目以 SKBr3 细胞乳酸外排实验作为主要结构-活性关系读出，并用靶点 X 与同源转运体 Y 的正交细胞实验、Caco-2、hERG、肝细胞稳定性及药代动力学评价效力、选择性和成药性。该系列保留三唑并嘧啶核心，主要探索连接链、右侧联芳和末端含氮环。除特别说明外，IC₅₀ 越小表示抑制作用越强；不同细胞、读出和单位不得直接换算。\n\nSKBr3 乳酸外排实验将细胞与化合物孵育 4 h，再量取培养基并用乳酸氧化酶和过氧化物酶偶联显色。该读数反映培养基中的净乳酸量，同时受到乳酸生成和跨膜转运影响。急性 Mito Stress Test 在给药 1 h 后测量氧耗率（OCR）；OCR 反映线粒体呼吸状态，不直接测量靶点 X 的乳酸转运。下表只按原文曲线报告方向，原文没有给出各浓度点的精确数值。项目另有经 Western blot 确认为靶点 X-null 的 COLO 320DM 细胞，但它与 SKBr3 不是等基因来源。\n\n| 化合物 | 结构变化摘要 | 完整 Isomeric SMILES |\n| --- | --- | --- |\n| 11 | C 连接吡咯烷；吡嗪-对 N-甲基哌嗪甲基苯基尾端 | `Cc1c(c(n2c(n1)nc(n2)C)C)C[C@@H]3CCN(C3)c4cnc(cn4)c5ccc(cc5)CN6CCN(CC6)C` |\n| 13 | C 连接吡咯烷；苯基-吡哒嗪-吗啉甲基尾端 | `Cc1c(c(n2c(n1)nc(n2)C)C)C[C@@H]3CCN(C3)c4ccc(cc4)c5ccc(nn5)CN6CCOCC6` |\n\n| 化合物 | SKBr3 乳酸外排 IC₅₀（nM） | SKBr3 乳酸读数，约 1 μM 以上 | SKBr3 OCR，1–100 nM | SKBr3 OCR，约 1 μM 以上 |\n| --- | ---: | --- | --- | --- |\n| 11 | 1.7 | 表观抑制减弱 | 相对 DMSO 升高 | 下降 |\n| 13 | 0.29 | 表观抑制减弱 | 相对 DMSO 升高 | 明显下降 |\n\n**问题：请针对 11、13 在高浓度下的乳酸读数与 OCR 异常提出至少两个竞争解释，选择信息增益最高的首要判别实验，并用 If–Then 分支说明不同结果将如何改变靶点依赖性判断、后续实验和化学路线。**",
+        "rubrics": [
+          {
+            "rubric_id": "ANW-MC-011-Q3-R1",
+            "ordinal": 1,
+            "criterion": "依据 11、13 在 SKBr3 中的乳酸读数与 OCR 双相现象提出至少两个竞争解释：高浓度异常既可能来自靶点 X 依赖的更强代谢扰动，也可能来自靶点 X 无关的线粒体功能影响，后者可通过改变乳酸生成影响 4 h 培养基净乳酸读数。",
+            "score": 3.0,
+            "scoring_anchor": "用同一组高浓度异常建立靶点依赖与靶点无关的竞争解释",
+            "reference": "正文 pp.387–388 Figures 3–4 及邻接正文；Evidence ID E011-013、E011-037"
+          },
+          {
+            "rubric_id": "ANW-MC-011-Q3-R2",
+            "ordinal": 2,
+            "criterion": "把对齐浓度范围、给药时间和各自 DMSO 对照的靶点 X 阳性 SKBr3 与靶点 X-null COLO 320DM 一小时 OCR 比较列为最高优先级，并给出能改变结论的 If–Then：null 细胞也下降则支持靶点无关风险；只有阳性细胞下降则支持靶点依赖解释并进入同背景敲除/恢复确认；若 OCR 不复现而乳酸异常保留，则检查净乳酸读数中的生成量、细胞数和活力。",
+            "score": 4.0,
+            "scoring_anchor": "阳性/null 双细胞 OCR 是最快区分靶点依赖性的论文真实实验",
+            "reference": "正文 p.388 Figure 4 及邻接正文；SI p.S4 Seahorse 方法；Evidence ID E011-014、E011-024、E011-029、E011-037"
+          },
+          {
+            "rubric_id": "ANW-MC-011-Q3-R3",
+            "ordinal": 3,
+            "criterion": "根据不同分支给出项目行动并限定证据强度：靶点无关分支降低 11、13 优先级并要求后续类似物消除高浓度 OCR 下降；靶点依赖分支进入同背景遗传确认；同时说明非等基因双细胞比较和 OCR 读数不能识别具体分子脱靶、指定呼吸链复合物或单独证明细胞死亡。",
+            "score": 3.0,
+            "scoring_anchor": "让实验结果改变化学路线，并保留非等基因和 OCR 解释限制",
+            "reference": "正文 p.388 Figure 4 及邻接正文；SI p.S4 Seahorse 方法；Evidence ID E011-014、E011-024、E011-029、E011-037"
+          },
+          {
+            "rubric_id": "ANW-MC-011-Q3-P1",
+            "ordinal": 4,
+            "criterion": "只罗列“测 OCR、做活力、做代谢组、做敲除”等实验名称，没有最高优先级、阳性/null 对照关系或任何会改变结论的 If–Then 分支。",
+            "score": -3.0,
+            "scoring_anchor": "无序实验菜单不能判别靶点依赖性，也没有说明信息增益",
+            "reference": "正文 p.388 Figure 4；SI p.S4 Seahorse 方法；Evidence ID E011-014、E011-024、E011-029"
+          },
+          {
+            "rubric_id": "ANW-MC-011-Q3-P2",
+            "ordinal": 5,
+            "criterion": "仅凭 OCR 下降便指定某个呼吸链复合物、具体分子脱靶或细胞死亡，并把该未经验证的分子机制作为淘汰整条化学系列的唯一理由。",
+            "score": -3.0,
+            "scoring_anchor": "OCR 只提示线粒体功能风险类别，不能识别具体分子机制",
+            "reference": "正文 p.388 Figure 4 及邻接正文；SI p.S4 Seahorse 方法；Evidence ID E011-014、E011-024、E011-029、E011-037"
+          }
+        ]
+      },
+      {
+        "question_id": "ANW-MC-011-Q4",
+        "number": 4,
+        "title": "连接原子与末端环的受限设计（10 分）",
+        "dimension": "Molecular Design；Project Decision & Rigor",
+        "drug_modality": "Small molecule（含 covalent）",
+        "development_stage": "Lead optimization",
+        "difficulty": "L2",
+        "question_type": "分子设计 / 合成",
+        "grading_method": "自动 + 半自动",
+        "stem_markdown": "**项目背景：** 项目 E 正在优化一类小分子靶点 X 转运抑制剂。靶点 X 参与肿瘤细胞乳酸外排，项目以 SKBr3 细胞乳酸外排实验作为主要结构-活性关系读出，并用靶点 X 与同源转运体 Y 的正交细胞实验、Caco-2、hERG、肝细胞稳定性及药代动力学评价效力、选择性和成药性。该系列保留三唑并嘧啶核心，主要探索连接链、右侧联芳和末端含氮环。除特别说明外，IC₅₀ 越小表示抑制作用越强；不同细胞、读出和单位不得直接换算。\n\n团队已锁定三唑并嘧啶核心、吡咯烷活性构型和苯基-吡哒嗪联芳，下一轮只允许合成一个类似物。新类似物必须把核心与吡咯烷之间的`CH₂`连接改为`O`连接；末端环只能在参照 A 的吗啉与参照 B 的 N-甲基哌嗪之间选择。\n\n**参照 A：** `CH₂`连接吡咯烷；末端吗啉。完整 Isomeric SMILES：`Cc1c(c(n2c(n1)nc(n2)C)C)C[C@@H]3CCN(C3)c4ccc(cc4)c5ccc(nn5)CN6CCOCC6`\n\n**参照 B：** `CH₂`连接吡咯烷；末端 N-甲基哌嗪。完整 Isomeric SMILES：`Cc1c(c(n2c(n1)nc(n2)C)C)C[C@@H]3CCN(C3)c4ccc(cc4)c5ccc(nn5)CN6CCN(CC6)C`\n\n| 参数 | 参照 A | 参照 B |\n| --- | ---: | ---: |\n| SI 乳酸外排 pIC₅₀（算术均值；SEM；n） | 9.53；0.092；17 | 9.04；0.111；4 |\n| 正文 SKBr3 乳酸外排 IC₅₀（nM） | 0.29 | 0.91 |\n| logD₇.₄ | 2.3 | 1.8 |\n| LLE | 7.3 | 7.3 |\n| Caco-2 ER | 3.3 | 74 |\n| hERG IC₅₀（μM） | 13 | >33 |\n| 末端基团信息 | 吗啉实测 pKₐ 5.4 | N-甲基哌嗪；本化合物 pKₐ 未报告 |\n\n作者随后提出把核心与吡咯烷之间的连接原子由碳改为氧。计算模型显示，这种`O`连接可以形成与参照 A 相近的构象；降低脂溶性是作者据此提出的待验证预期。作出本轮设计决定时，尚无`O`连接类似物的实测结果。\n\n`>`只表示 IC₅₀ 高于测定上限，不能作为精确值使用。Caco-2 ER 为 Papp(B→A)/Papp(A→B)。\n\n**问题：请在吗啉与 N-甲基哌嗪之间选择末端环，给出能唯一确定连接关系与吡咯烷构型的结构方案，并依据参照 A、B 和作者的`O`连接设计假说，说明选择理由、最需要警惕的不利变化，以及决定是否继续该结构的首轮实测组合。**",
+        "rubrics": [
+          {
+            "rubric_id": "ANW-MC-011-Q4-R1",
+            "ordinal": 1,
+            "criterion": "准确比较参照 A→B：logD₇.₄ 2.3→1.8、hERG IC₅₀ 13→`>33 μM`，同时乳酸外排 IC₅₀ 0.29→0.91 nM、ER 3.3→74；据此说明论文没有继续推进该 N-甲基哌嗪类似物，不能只按 logD 或 hERG 选择末端环。",
+            "score": 3.0,
+            "scoring_anchor": "较低 logD 和较弱 hERG 抑制不足以抵消参照 B 的严重外排",
+            "reference": "正文 pp.386–387，Table 3 及邻接讨论；SI p.S2 Table S1；Evidence ID E011-009、E011-010、E011-038"
+          },
+          {
+            "rubric_id": "ANW-MC-011-Q4-R2",
+            "ordinal": 2,
+            "criterion": "选择`O`连接加吗啉，明确是把参照 A 的核心－吡咯烷`CH₂`换成`O`，保持活性构型和其他锁定部分；联系作者预测相近构象并预期降低脂溶性的设计假说，同时明确这是前瞻性推断而非实测结论。",
+            "score": 4.0,
+            "scoring_anchor": "保留已有低 ER 观察的吗啉，同时检验论文随后提出的`O`连接假说",
+            "reference": "正文 p.386 邻接讨论；官方 CSV row 13；Evidence ID E011-025、E011-038"
+          },
+          {
+            "rubric_id": "ANW-MC-011-Q4-R3",
+            "ordinal": 3,
+            "criterion": "指出`O`连接可能改变几何、电子性质和效力，ER/hERG 方向也不能由建模保证；首轮覆盖乳酸外排完整曲线、靶点 X/同源转运体 Y、logD₇.₄/可选 pKₐ、双向 Caco-2/ER 和 hERG，并以相对参照 A、B 的结果决定是否进入肝细胞稳定性和大鼠 PK。",
+            "score": 3.0,
+            "scoring_anchor": "先实测效力、选择性、脂溶性、外排和 hERG，再决定是否扩大 DMPK",
+            "reference": "正文 pp.386–387，Table 3 及邻接讨论；Evidence ID E011-009、E011-010、E011-038"
+          },
+          {
+            "rubric_id": "ANW-MC-011-Q4-P1",
+            "ordinal": 4,
+            "criterion": "把 ER=74 直接等同于低本征渗透性，或在没有 A→B、B→A 单向 Papp 数值时，断言该比值升高完全来自吸收方向降低或外排方向升高。",
+            "score": -3.0,
+            "scoring_anchor": "ER 是两个方向表观渗透率之比，单有比值不能确定某一方向的绝对变化",
+            "reference": "正文 p.387，Table 3 及脚注；Evidence ID E011-010"
+          },
+          {
+            "rubric_id": "ANW-MC-011-Q4-P2",
+            "ordinal": 5,
+            "criterion": "为参照 B 补造未报告的精确 pKₐ，并把 A/B 的 ER 差异归结为未经材料支持的单一 pKₐ 因果关系。",
+            "score": -3.0,
+            "scoring_anchor": "未报告的 pKₐ 不能补造，现有配对不能证明 ER 差异的单一机制",
+            "reference": "正文 pp.386–387，Table 3 及邻接讨论；Evidence ID E011-010、E011-038"
+          }
+        ]
+      }
+    ]
+  }
+]
