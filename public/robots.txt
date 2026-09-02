@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://zichenwang114514.github.io/medchem-agent-benchmark/sitemap.xml

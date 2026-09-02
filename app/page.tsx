@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, type CSSProperties, type ReactNode } from 'react';
+import { useEffect, useState, type CSSProperties, type ReactNode } from 'react';
 import { ArrowRight, Beaker, BookOpenCheck, BrainCircuit, Check, Database, FolderGit2 as GithubIcon, Globe2, Mail, ShieldCheck } from 'lucide-react';
 import questionData from '../content/questions.json';
 
@@ -13,7 +13,7 @@ const sets = questionData as QuestionSet[];
 const copy = {
   zh: {
     nav: ['数据概览', '评测结果', '能力覆盖', '架构与评测', '完整样例', '合作方案'], eyebrow: 'MEDICINAL CHEMISTRY · AI TRAINING & EVALUATION',
-    title: '专家级药物化学推理数据，面向下一代科学智能体',
+    title: '专家级药物化学推理数据，\n面向下一代科学智能体',
     intro: '500 个完整题组、约 2,000 个连续任务和约 10,000 条专家评分标准。数据围绕真实药物研发证据构建，可用于模型训练、强化学习、私有评测与科学智能体测试。',
     cta: '洽谈数据合作', samples: '查看完整样例', proof: '14 个 coding agent 与模型组合均完成同一批 20 个题组；每份回答均有三次独立评分。',
     resultsTitle: 'Pilot20 参赛系统总成绩', resultsText: '同一批 20 个题组；每个系统 20 份有效回答；每份回答由 Luna High 独立评分三次。柱形显示得分率，满分为 800。',
@@ -28,6 +28,12 @@ const copy = {
     cooperationTitle: '按研发目标选择合作方式', cooperationText: '从小规模付费试评开始，也可以直接采购完整数据或训练用途授权。所有方案均可按客户字段转换。',
     contactTitle: '把你的模型放到真实药物化学任务中检验', contactText: '欢迎模型团队、AI 制药公司、训练数据服务商和科研机构联系。',
     email: '发送合作邮件', github: 'GitHub 项目', sourceLanguage: '', setLabel: '完整题组', tasks: '个任务', footer: 'MedChem Agent Benchmark · Expert-curated data for scientific AI',
+    facts: [['14', '模型系统'], ['20', '题组'], ['60', '次评审 / 系统']],
+    features: [
+      ['Evidence-grounded', '论文、补充材料、结构与实验数据共同支持任务设计。'],
+      ['Reasoning-intensive', '考察定量比较、因果判断、结构设计与研发决策。'],
+      ['Expert-scored', '每个任务含正向标准、严重错误项和证据引用。'],
+    ] as const,
   },
   en: {
     nav: ['Dataset', 'Results', 'Coverage', 'Architecture', 'Full samples', 'Licensing'], eyebrow: 'MEDICINAL CHEMISTRY · AI TRAINING & EVALUATION',
@@ -46,6 +52,12 @@ const copy = {
     cooperationTitle: 'Choose the engagement that fits your program', cooperationText: 'Begin with a paid pilot, license the complete collection, or add training rights. Delivery can be mapped to a client-defined schema.',
     contactTitle: 'Test your model on real medicinal chemistry work', contactText: 'We welcome inquiries from model teams, AI drug-discovery companies, expert-data providers, and research organizations.',
     email: 'Email for partnership', github: 'GitHub project', sourceLanguage: 'Full task content is presented in its original Chinese. Professional English adaptation is available with licensed delivery.', setLabel: 'Full task set', tasks: 'tasks', footer: 'MedChem Agent Benchmark · Expert-curated data for scientific AI',
+    facts: [['14', 'systems'], ['20', 'sets'], ['60', 'judgements / system']],
+    features: [
+      ['Evidence-grounded', 'Task design is grounded in papers, supplementary materials, molecular structures, and experimental data.'],
+      ['Reasoning-intensive', 'Quantitative comparison, causal judgment, structural design, and real program decisions.'],
+      ['Expert-scored', 'Every task includes positive criteria, critical-error penalties, and evidence references.'],
+    ] as const,
   },
 };
 
@@ -139,7 +151,7 @@ function SampleSet({ set, language }: { set: QuestionSet; language: Language }) 
 function ResultsChart({ language }: { language: Language }) {
   const t = copy[language];
   return <section className="results-card" id="results" aria-labelledby="results-title">
-    <div className="results-head"><div><p className="kicker">PILOT20 · RESULTS</p><h2 id="results-title">{t.resultsTitle}</h2><p>{t.resultsText}</p></div><div className="results-facts"><span><b>14</b> systems</span><span><b>20</b> sets</span><span><b>60</b> judgements / system</span></div></div>
+    <div className="results-head"><div><p className="kicker">PILOT20 · RESULTS</p><h2 id="results-title">{t.resultsTitle}</h2><p>{t.resultsText}</p></div><div className="results-facts">{t.facts.map(([value, label]) => <span key={label}><b>{value}</b> {label}</span>)}</div></div>
     <div className="results-scroll"><div className="results-plot">
       <div className="score-axis" aria-hidden="true">{scoreGrid.map((level) => <span key={level} style={{ bottom: `${level * 2.45 + 104}px` }}>{level}</span>)}</div>
       <div className="score-grid" aria-hidden="true">{scoreGrid.map((level) => <i key={level} style={{ bottom: `${level}%` }} />)}</div>
@@ -154,11 +166,16 @@ function ResultsChart({ language }: { language: Language }) {
 }
 
 export default function Home() {
-  const [language, setLanguage] = useState<Language>('zh'); const t = copy[language];
+  const [language, setLanguage] = useState<Language>(() => (typeof localStorage !== 'undefined' && localStorage.getItem('mcab-lang') === 'en' ? 'en' : 'zh'));
+  useEffect(() => {
+    localStorage.setItem('mcab-lang', language);
+    document.documentElement.lang = language === 'zh' ? 'zh-CN' : 'en';
+  }, [language]);
+  const t = copy[language];
   return <main>
-    <header className="site-header"><a className="brand" href="#top"><span className="brand-mark"><Beaker size={18} /></span><span>MedChem Agent Benchmark</span></a><nav>{['overview', 'results', 'coverage', 'workflow', 'samples', 'licensing'].map((id, index) => <a href={`#${id}`} key={id}>{t.nav[index]}</a>)}</nav><div className="language-switch"><button className={language === 'zh' ? 'active' : ''} onClick={() => setLanguage('zh')}>中</button><button className={language === 'en' ? 'active' : ''} onClick={() => setLanguage('en')}>EN</button></div></header>
+    <header className="site-header"><a className="brand" href="#top"><span className="brand-mark"><Beaker size={18} /></span><span>MedChem Agent Benchmark</span></a><nav aria-label="Sections">{['overview', 'results', 'coverage', 'workflow', 'samples', 'licensing'].map((id, index) => <a href={`#${id}`} key={id}>{t.nav[index]}</a>)}</nav><fieldset className="language-switch" aria-label="Language / 语言"><button type="button" className={language === 'zh' ? 'active' : ''} aria-pressed={language === 'zh'} onClick={() => setLanguage('zh')}>中</button><button type="button" className={language === 'en' ? 'active' : ''} aria-pressed={language === 'en'} lang="en" onClick={() => setLanguage('en')}>EN</button></fieldset></header>
     <section className="hero" id="top"><div className="hero-copy"><p className="eyebrow">{t.eyebrow}</p><h1>{t.title}</h1><p className="hero-intro">{t.intro}</p><div className="hero-actions"><a className="primary-action" href="mailto:wangzc@stu.pku.edu.cn?subject=MedChem%20Agent%20Benchmark%20Partnership">{t.cta}<Mail size={17} /></a><a className="secondary-action" href="#samples">{t.samples}<ArrowRight size={17} /></a></div><p className="proof"><Check size={15} />{t.proof}</p></div><div className="metric-panel">{metrics.map(([value, label]) => <div className="metric" key={label}><strong>{value}</strong><span>{label}</span></div>)}</div><ResultsChart language={language} /></section>
-    <section className="section" id="overview"><div className="section-lead"><p className="section-number">01 · DATASET</p><h2>{t.overviewTitle}</h2><p>{t.overviewText}</p></div><div className="feature-grid"><div className="feature"><Database /><h3>Evidence-grounded</h3><p>论文、补充材料、结构与实验数据共同支持任务设计。</p></div><div className="feature"><BrainCircuit /><h3>Reasoning-intensive</h3><p>考察定量比较、因果判断、结构设计与研发决策。</p></div><div className="feature"><ShieldCheck /><h3>Expert-scored</h3><p>每个任务含正向标准、严重错误项和证据引用。</p></div></div></section>
+    <section className="section" id="overview"><div className="section-lead"><p className="section-number">01 · DATASET</p><h2>{t.overviewTitle}</h2><p>{t.overviewText}</p></div><div className="feature-grid">{t.features.map(([heading, text], index) => { const Icon = [Database, BrainCircuit, ShieldCheck][index]; return <div className="feature" key={heading}><Icon /><h3>{heading}</h3><p>{text}</p></div>; })}</div></section>
     <section className="section soft" id="coverage"><div className="section-lead compact"><p className="section-number">02 · COVERAGE</p><h2>{t.coverageTitle}</h2><p>{t.coverageText}</p></div><div className="coverage-grid">{coverage.map(([name, description], index) => <div className="coverage-item" key={name}><span>{String(index + 1).padStart(2, '0')}</span><div><strong>{name}</strong><p>{description}</p></div></div>)}</div></section>
     <section className="section architecture" id="workflow"><div className="section-lead"><p className="section-number">03 · ARCHITECTURE & EVALUATION</p><h2>{t.architectureTitle}</h2><p>{t.architectureText}</p><p className="architecture-note"><Check size={15} />{t.architectureNote}</p></div><div className="workflow-shell">{workflowRows[language].map((row, rowIndex) => <div className="flow-lane" key={row.label}><div className="flow-label"><span>0{rowIndex + 1}</span><strong>{row.label}</strong><small>{row.note}</small></div><div className="flow-nodes">{row.nodes.map((node, nodeIndex) => <div className="flow-node" key={node}><span>{node}</span>{nodeIndex < row.nodes.length - 1 && <ArrowRight size={15} aria-hidden="true" />}</div>)}</div></div>)}</div><div className="principles-head"><ShieldCheck size={19} /><h3>{t.principlesTitle}</h3></div><div className="principle-grid">{evaluationPrinciples[language].map(([title, description], index) => <div className="principle" key={title}><span>0{index + 1}</span><strong>{title}</strong><p>{description}</p></div>)}</div></section>
     <section className="section samples" id="samples"><div className="section-lead"><p className="section-number">04 · FULL SAMPLES</p><h2>{t.sampleTitle}</h2><p>{t.sampleText}</p><p className="sample-hint"><BookOpenCheck size={16} />{t.sampleNote}</p></div><div className="sample-stack">{sets.map((set) => <SampleSet key={set.set_id} set={set} language={language} />)}</div></section>
