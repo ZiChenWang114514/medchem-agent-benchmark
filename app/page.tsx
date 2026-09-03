@@ -53,7 +53,7 @@ const copy = {
       ['Expert-scored', '每个任务配备正向评分标准、严重错误扣分项与证据引用。'],
     ] as const,
     diversityTitle: '多样性，逼模型像专家一样交叉推理',
-    diversityText: '八项能力维度、三类药物模态、三段研发阶段、四类题型，平均每道题串联约两个维度——模型没法靠单点记忆答题，必须像药化专家一样交叉判断。这正是它同时适合评测、强化学习与 SFT 的原因。',
+    diversityText: '500 个题组共 2,000 道任务，覆盖八项能力维度、三类药物模态、三段研发阶段和四类题型。平均每道题串联约两个能力维度，要求模型进行接近药物化学专家的综合判断。',
     radarTitle: '八项能力维度全景',
     legendActual: '实际占比',
     modalityTitle: '药物模态', stageTitle: '研发阶段', difficultyTitle: '难度', qTypeTitle: '题型分布',
@@ -82,7 +82,7 @@ const copy = {
       ['Expert-scored', 'Positive criteria, critical-error penalties, and evidence references for every task.'],
     ] as const,
     diversityTitle: 'Diversity that forces expert-style cross-reasoning',
-    diversityText: 'Eight capability dimensions, three drug modalities, three development stages and four question types — about two dimensions woven into every question. Models cannot win by single-point recall; they have to judge the way a medicinal chemist does. That is what makes the bank equally suited to evaluation, reinforcement learning, and SFT.',
+    diversityText: 'The full 500-set, 2,000-task collection spans eight capability dimensions, three drug modalities, three development stages and four question types. About two capabilities are woven into each task, requiring integrated judgment close to that of a medicinal chemist.',
     radarTitle: 'Eight capability dimensions',
     legendActual: 'Actual share',
     modalityTitle: 'Drug modality', stageTitle: 'Development stage', difficultyTitle: 'Difficulty', qTypeTitle: 'Question types',
@@ -220,15 +220,17 @@ function DiversitySection({ language }: { language: Language }) {
   };
   const poly = (key: 'ratio' | 'target') => dv.radar.map((d, i) => axisPt(i, d[key] ?? 0).join(',')).join(' ');
   const kpis = language === 'zh'
-    ? [['500', '题组'], ['2,000', '任务'], ['8', '能力维度'], ['540', '支撑文献']]
-    : [['500', 'sets'], ['2,000', 'tasks'], ['8', 'dimensions'], ['540', 'papers']];
-  const groups: [string, DimStat[]][] = [[t.modalityTitle, dv.modalities], [t.stageTitle, dv.stages], [t.difficultyTitle, dv.difficulties]];
+    ? [['500', '题组'], ['2,000', '任务'], ['8', '能力维度'], ['540', '文献记录']]
+    : [['500', 'sets'], ['2,000', 'tasks'], ['8', 'dimensions'], ['540', 'source records']];
+  const difficultyLabel = language === 'zh' ? `${t.difficultyTitle}（已登记 1,120 题）` : `${t.difficultyTitle} (1,120 authored tasks)`;
+  const groups: [string, DimStat[]][] = [[t.modalityTitle, dv.modalities], [t.stageTitle, dv.stages], [difficultyLabel, dv.difficulties]];
   const proofs = language === 'zh'
-    ? [['1.9', '每题平均串联的能力维度'], ['88%', '题目难度达到 L2 以上'], ['540', '篇论文逐题溯源']]
-    : [['1.9', 'dimensions woven into every question'], ['88%', 'of questions at L2 or above'], ['540', 'papers cited question by question']];
+    ? [['1.9', '每题平均串联的能力维度'], ['88%', '已登记题目达到 L2 以上'], ['540', '条精选文献记录']]
+    : [['1.9', 'capabilities woven into each task'], ['88%', 'of authored tasks at L2 or above'], ['540', 'curated source records']];
 
   return <section className="section soft" id="diversity">
     <div className="section-lead"><p className="section-number">03 · DIVERSITY</p><h2>{t.diversityTitle}</h2><p>{t.diversityText}</p></div>
+    <p className="architecture-note">{language === 'zh' ? '统计范围：第 1–280 题组采用已登记题目元数据，第 281–500 题组采用逐题文献规划；难度仅统计已登记的 1,120 道题。' : 'Scope: sets 1–280 use authored task metadata and sets 281–500 use the per-task literature plan; difficulty covers the 1,120 authored tasks only.'}</p>
     <div className="dv-kpis">{kpis.map(([value, label]) => <div className="dv-kpi" key={label}><strong>{value}</strong><span>{label}</span></div>)}</div>
     <div className="dv-grid">
       <div className="dv-card dv-radar-card">
