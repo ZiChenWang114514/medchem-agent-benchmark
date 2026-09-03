@@ -1,0 +1,552 @@
+{
+ "generated": "2026-09-03",
+ "scope": {
+  "total_sets": 500,
+  "total_questions": 2000,
+  "authored_sets": 280,
+  "authored_questions": 1120
+ },
+ "radar": [
+  {
+   "key": "Chemical Reasoning",
+   "zh": "化学推理",
+   "en": "Chemical Reasoning",
+   "count": 184,
+   "ratio": 0.1643,
+   "target": 0.2,
+   "gap": 40,
+   "status": "GAP"
+  },
+  {
+   "key": "SAR & Data Interpretation",
+   "zh": "SAR 与数据解读",
+   "en": "SAR & Data Interpretation",
+   "count": 422,
+   "ratio": 0.3768,
+   "target": 0.3,
+   "gap": -86,
+   "status": "AT_OR_ABOVE_TARGET"
+  },
+  {
+   "key": "Molecular Design",
+   "zh": "分子设计",
+   "en": "Molecular Design",
+   "count": 292,
+   "ratio": 0.2607,
+   "target": 0.25,
+   "gap": -12,
+   "status": "AT_OR_ABOVE_TARGET"
+  },
+  {
+   "key": "SBDD / Structural Design",
+   "zh": "基于结构的设计",
+   "en": "SBDD / Structural Design",
+   "count": 139,
+   "ratio": 0.1241,
+   "target": 0.2,
+   "gap": 85,
+   "status": "GAP"
+  },
+  {
+   "key": "ADMET / DMPK / Safety",
+   "zh": "ADMET / DMPK / 安全性",
+   "en": "ADMET / DMPK / Safety",
+   "count": 511,
+   "ratio": 0.4562,
+   "target": 0.35,
+   "gap": -119,
+   "status": "AT_OR_ABOVE_TARGET"
+  },
+  {
+   "key": "Synthesis & Route Feasibility",
+   "zh": "合成与路线可行性",
+   "en": "Synthesis & Route Feasibility",
+   "count": 68,
+   "ratio": 0.0607,
+   "target": 0.15,
+   "gap": 100,
+   "status": "GAP"
+  },
+  {
+   "key": "IP / Patent / CI",
+   "zh": "专利与自由实施",
+   "en": "IP / Patent / CI",
+   "count": 8,
+   "ratio": 0.0071,
+   "target": 0.1,
+   "gap": 104,
+   "status": "GAP"
+  },
+  {
+   "key": "Project Decision & Rigor",
+   "zh": "项目决策与严谨性",
+   "en": "Project Decision & Rigor",
+   "count": 522,
+   "ratio": 0.4661,
+   "target": 0.3,
+   "gap": -186,
+   "status": "AT_OR_ABOVE_TARGET"
+  }
+ ],
+ "modalities": [
+  {
+   "key": "Small molecule（含 covalent）",
+   "zh": "小分子（含共价）",
+   "en": "Small molecule (incl. covalent)",
+   "count": 864,
+   "ratio": 0.7714,
+   "target": 0.5,
+   "gap": -304,
+   "status": "AT_OR_ABOVE_TARGET",
+   "color": "#205d47"
+  },
+  {
+   "key": "Macrocycle / peptide",
+   "zh": "大环与多肽",
+   "en": "Macrocycle / peptide",
+   "count": 128,
+   "ratio": 0.1143,
+   "target": 0.2,
+   "gap": 96,
+   "status": "GAP",
+   "color": "#4d82bd"
+  },
+  {
+   "key": "Antibody / ADC payload / linker",
+   "zh": "抗体 / ADC",
+   "en": "Antibody / ADC payload / linker",
+   "count": 128,
+   "ratio": 0.1143,
+   "target": 0.3,
+   "gap": 208,
+   "status": "GAP",
+   "color": "#7a62be"
+  }
+ ],
+ "stages": [
+  {
+   "key": "Hit triage",
+   "zh": "命中筛选",
+   "en": "Hit triage",
+   "count": 89,
+   "ratio": 0.0795,
+   "target": 0.15,
+   "gap": 79,
+   "status": "GAP"
+  },
+  {
+   "key": "Lead optimization",
+   "zh": "先导优化",
+   "en": "Lead optimization",
+   "count": 865,
+   "ratio": 0.7723,
+   "target": 0.6,
+   "gap": -193,
+   "status": "AT_OR_ABOVE_TARGET"
+  },
+  {
+   "key": "PCC nomination / FTO",
+   "zh": "候选物提名与 FTO",
+   "en": "PCC nomination / FTO",
+   "count": 166,
+   "ratio": 0.1482,
+   "target": 0.25,
+   "gap": 114,
+   "status": "GAP"
+  }
+ ],
+ "difficulties": [
+  {
+   "key": "L1",
+   "zh": "L1 · 基础",
+   "en": "L1 · foundational",
+   "count": 131,
+   "ratio": 0.117,
+   "target": 0.25,
+   "gap": 149,
+   "status": "GAP"
+  },
+  {
+   "key": "L2",
+   "zh": "L2 · 进阶",
+   "en": "L2 · advanced",
+   "count": 453,
+   "ratio": 0.4045,
+   "target": 0.5,
+   "gap": 107,
+   "status": "GAP"
+  },
+  {
+   "key": "L3",
+   "zh": "L3 · 专家",
+   "en": "L3 · expert",
+   "count": 536,
+   "ratio": 0.4786,
+   "target": 0.25,
+   "gap": -256,
+   "status": "AT_OR_ABOVE_TARGET"
+  }
+ ],
+ "questionTypes": [
+  {
+   "key": "SBDD / 结构",
+   "zh": "SBDD / 结构",
+   "en": "SBDD / structural",
+   "count": 207,
+   "ratio": 0.1848
+  },
+  {
+   "key": "ADMET / DMPK",
+   "zh": "ADMET / DMPK",
+   "en": "ADMET / DMPK",
+   "count": 181,
+   "ratio": 0.1616
+  },
+  {
+   "key": "分子设计 / 合成",
+   "zh": "分子设计 / 合成",
+   "en": "Molecular design / synthesis",
+   "count": 295,
+   "ratio": 0.2634
+  },
+  {
+   "key": "项目决策",
+   "zh": "项目决策",
+   "en": "Program decisions",
+   "count": 437,
+   "ratio": 0.3902
+  }
+ ],
+ "batches": [
+  {
+   "id": "batch-1",
+   "zh": "第一批",
+   "en": "Batch 1",
+   "range": [
+    1,
+    60
+   ],
+   "status": "AUTHORED",
+   "statusZh": "已完成命题",
+   "sets": 60,
+   "plannedSets": 60,
+   "trackedSets": 0,
+   "questions": 240,
+   "shares": [
+    {
+     "zh": "化学推理",
+     "en": "Chemical Reasoning",
+     "ratio": 0.0794
+    },
+    {
+     "zh": "SAR 与数据解读",
+     "en": "SAR & Data Interpretation",
+     "ratio": 0.2154
+    },
+    {
+     "zh": "分子设计",
+     "en": "Molecular Design",
+     "ratio": 0.1519
+    },
+    {
+     "zh": "基于结构的设计",
+     "en": "SBDD / Structural Design",
+     "ratio": 0.0635
+    },
+    {
+     "zh": "ADMET / DMPK / 安全性",
+     "en": "ADMET / DMPK / Safety",
+     "ratio": 0.2971
+    },
+    {
+     "zh": "合成与路线可行性",
+     "en": "Synthesis & Route Feasibility",
+     "ratio": 0.0
+    },
+    {
+     "zh": "专利与自由实施",
+     "en": "IP / Patent / CI",
+     "ratio": 0.0
+    },
+    {
+     "zh": "项目决策与严谨性",
+     "en": "Project Decision & Rigor",
+     "ratio": 0.1927
+    }
+   ]
+  },
+  {
+   "id": "batch-2",
+   "zh": "第二批",
+   "en": "Batch 2",
+   "range": [
+    61,
+    280
+   ],
+   "status": "AUTHORED",
+   "statusZh": "已完成命题",
+   "sets": 220,
+   "plannedSets": 220,
+   "trackedSets": 0,
+   "questions": 880,
+   "shares": [
+    {
+     "zh": "化学推理",
+     "en": "Chemical Reasoning",
+     "ratio": 0.0874
+    },
+    {
+     "zh": "SAR 与数据解读",
+     "en": "SAR & Data Interpretation",
+     "ratio": 0.1918
+    },
+    {
+     "zh": "分子设计",
+     "en": "Molecular Design",
+     "ratio": 0.132
+    },
+    {
+     "zh": "基于结构的设计",
+     "en": "SBDD / Structural Design",
+     "ratio": 0.0651
+    },
+    {
+     "zh": "ADMET / DMPK / 安全性",
+     "en": "ADMET / DMPK / Safety",
+     "ratio": 0.2229
+    },
+    {
+     "zh": "合成与路线可行性",
+     "en": "Synthesis & Route Feasibility",
+     "ratio": 0.0399
+    },
+    {
+     "zh": "专利与自由实施",
+     "en": "IP / Patent / CI",
+     "ratio": 0.0047
+    },
+    {
+     "zh": "项目决策与严谨性",
+     "en": "Project Decision & Rigor",
+     "ratio": 0.2563
+    }
+   ]
+  },
+  {
+   "id": "batch-3",
+   "zh": "第三批",
+   "en": "Batch 3",
+   "range": [
+    281,
+    380
+   ],
+   "status": "AUTHORING",
+   "statusZh": "命题进行中",
+   "sets": 0,
+   "plannedSets": 100,
+   "trackedSets": 100,
+   "questions": 0,
+   "shares": [
+    {
+     "zh": "化学推理",
+     "en": "Chemical Reasoning",
+     "ratio": 0.0
+    },
+    {
+     "zh": "SAR 与数据解读",
+     "en": "SAR & Data Interpretation",
+     "ratio": 0.0
+    },
+    {
+     "zh": "分子设计",
+     "en": "Molecular Design",
+     "ratio": 0.0
+    },
+    {
+     "zh": "基于结构的设计",
+     "en": "SBDD / Structural Design",
+     "ratio": 0.0
+    },
+    {
+     "zh": "ADMET / DMPK / 安全性",
+     "en": "ADMET / DMPK / Safety",
+     "ratio": 0.0
+    },
+    {
+     "zh": "合成与路线可行性",
+     "en": "Synthesis & Route Feasibility",
+     "ratio": 0.0
+    },
+    {
+     "zh": "专利与自由实施",
+     "en": "IP / Patent / CI",
+     "ratio": 0.0
+    },
+    {
+     "zh": "项目决策与严谨性",
+     "en": "Project Decision & Rigor",
+     "ratio": 0.0
+    }
+   ]
+  },
+  {
+   "id": "batch-4",
+   "zh": "第四批",
+   "en": "Batch 4",
+   "range": [
+    381,
+    500
+   ],
+   "status": "PLANNED",
+   "statusZh": "已规划",
+   "sets": 0,
+   "plannedSets": 120,
+   "trackedSets": 0,
+   "questions": 0,
+   "shares": [
+    {
+     "zh": "化学推理",
+     "en": "Chemical Reasoning",
+     "ratio": 0.0
+    },
+    {
+     "zh": "SAR 与数据解读",
+     "en": "SAR & Data Interpretation",
+     "ratio": 0.0
+    },
+    {
+     "zh": "分子设计",
+     "en": "Molecular Design",
+     "ratio": 0.0
+    },
+    {
+     "zh": "基于结构的设计",
+     "en": "SBDD / Structural Design",
+     "ratio": 0.0
+    },
+    {
+     "zh": "ADMET / DMPK / 安全性",
+     "en": "ADMET / DMPK / Safety",
+     "ratio": 0.0
+    },
+    {
+     "zh": "合成与路线可行性",
+     "en": "Synthesis & Route Feasibility",
+     "ratio": 0.0
+    },
+    {
+     "zh": "专利与自由实施",
+     "en": "IP / Patent / CI",
+     "ratio": 0.0
+    },
+    {
+     "zh": "项目决策与严谨性",
+     "en": "Project Decision & Rigor",
+     "ratio": 0.0
+    }
+   ]
+  }
+ ],
+ "crosstab": {
+  "rows": [
+   {
+    "key": "Small molecule（含 covalent）",
+    "zh": "小分子（含共价）",
+    "en": "Small molecule (incl. covalent)"
+   },
+   {
+    "key": "Macrocycle / peptide",
+    "zh": "大环与多肽",
+    "en": "Macrocycle / peptide"
+   },
+   {
+    "key": "Antibody / ADC payload / linker",
+    "zh": "抗体 / ADC",
+    "en": "Antibody / ADC payload / linker"
+   }
+  ],
+  "cols": [
+   {
+    "key": "Hit triage",
+    "zh": "命中筛选",
+    "en": "Hit triage"
+   },
+   {
+    "key": "Lead optimization",
+    "zh": "先导优化",
+    "en": "Lead optimization"
+   },
+   {
+    "key": "PCC nomination / FTO",
+    "zh": "候选物提名与 FTO",
+    "en": "PCC nomination / FTO"
+   }
+  ],
+  "counts": [
+   [
+    16,
+    732,
+    116
+   ],
+   [
+    55,
+    64,
+    9
+   ],
+   [
+    18,
+    69,
+    41
+   ]
+  ]
+ },
+ "literature": {
+  "downloaded": 540,
+  "formal": 420,
+  "uniqueDoi": 538,
+  "eligible": 489,
+  "modality": {
+   "小分子（含共价）": 137,
+   "大环与多肽": 158,
+   "抗体 / ADC": 245
+  },
+  "rounds": [
+   {
+    "round": "Round1",
+    "zh": "第一轮",
+    "en": "Round1",
+    "downloaded": 150,
+    "formal": 150,
+    "modality": {
+     "小分子（含共价）": 75,
+     "大环与多肽": 25,
+     "抗体 / ADC": 50
+    }
+   },
+   {
+    "round": "Round2",
+    "zh": "第二轮",
+    "en": "Round2",
+    "downloaded": 150,
+    "formal": 30,
+    "modality": {
+     "大环与多肽": 60,
+     "抗体 / ADC": 75,
+     "小分子（含共价）": 15
+    }
+   },
+   {
+    "round": "Round3",
+    "zh": "第三轮",
+    "en": "Round3",
+    "downloaded": 240,
+    "formal": 240,
+    "modality": {
+     "抗体 / ADC": 120,
+     "大环与多肽": 73,
+     "小分子（含共价）": 47
+    }
+   }
+  ]
+ }
+}
