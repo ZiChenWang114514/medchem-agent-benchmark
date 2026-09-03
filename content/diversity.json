@@ -2,9 +2,7 @@
  "generated": "2026-09-03",
  "scope": {
   "total_sets": 500,
-  "total_questions": 2000,
-  "authored_sets": 280,
-  "authored_questions": 1120
+  "total_questions": 2000
  },
  "radar": [
   {
@@ -160,20 +158,20 @@
    "key": "L1",
    "zh": "L1 · 基础",
    "en": "L1 · foundational",
-   "count": 131,
-   "ratio": 0.117,
+   "count": 500,
+   "ratio": 0.25,
    "target": 0.25,
-   "gap": 149,
-   "status": "GAP"
+   "gap": 0,
+   "status": "AT_OR_ABOVE_TARGET"
   },
   {
    "key": "L2",
    "zh": "L2 · 进阶",
    "en": "L2 · advanced",
-   "count": 453,
-   "ratio": 0.4045,
+   "count": 964,
+   "ratio": 0.482,
    "target": 0.5,
-   "gap": 107,
+   "gap": 36,
    "status": "GAP"
   },
   {
@@ -181,9 +179,9 @@
    "zh": "L3 · 专家",
    "en": "L3 · expert",
    "count": 536,
-   "ratio": 0.4786,
+   "ratio": 0.268,
    "target": 0.25,
-   "gap": -256,
+   "gap": -36,
    "status": "AT_OR_ABOVE_TARGET"
   }
  ],
@@ -281,7 +279,7 @@
    "en": "Batch 2",
    "range": [
     61,
-    280
+    500
    ],
    "status": "AUTHORED",
    "statusZh": "已完成命题",

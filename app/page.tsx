@@ -13,18 +13,14 @@ const sets = questionData as QuestionSet[];
 
 type DimStat = { key: string; zh: string; en: string; count: number; ratio: number; target: number | null; gap: number | null; status: string };
 type ModStat = DimStat & { color: string };
-type Batch = { id: string; zh: string; en: string; range: number[]; status: string; statusZh: string; sets: number; plannedSets: number; trackedSets: number; questions: number; shares: { zh: string; en: string; ratio: number }[] };
 type Diversity = {
   generated: string;
-  scope: { total_sets: number; total_questions: number; authored_sets: number; authored_questions: number };
+  scope: { total_sets: number; total_questions: number };
   radar: DimStat[];
   modalities: ModStat[];
   stages: DimStat[];
   difficulties: DimStat[];
   questionTypes: { key: string; zh: string; en: string; count: number; ratio: number }[];
-  batches: Batch[];
-  crosstab: { rows: { key: string; zh: string; en: string }[]; cols: { key: string; zh: string; en: string }[]; counts: number[][] };
-  literature: { downloaded: number; formal: number; uniqueDoi: number; eligible: number; modality: Record<string, number>; rounds: { round: string; zh: string; en: string; downloaded: number; formal: number; modality: Record<string, number> }[] };
 };
 const dv = diversityData as Diversity;
 
@@ -222,15 +218,13 @@ function DiversitySection({ language }: { language: Language }) {
   const kpis = language === 'zh'
     ? [['500', '题组'], ['2,000', '任务'], ['8', '能力维度'], ['540', '文献记录']]
     : [['500', 'sets'], ['2,000', 'tasks'], ['8', 'dimensions'], ['540', 'source records']];
-  const difficultyLabel = language === 'zh' ? `${t.difficultyTitle}（已登记 1,120 题）` : `${t.difficultyTitle} (1,120 authored tasks)`;
-  const groups: [string, DimStat[]][] = [[t.modalityTitle, dv.modalities], [t.stageTitle, dv.stages], [difficultyLabel, dv.difficulties]];
+  const groups: [string, DimStat[]][] = [[t.modalityTitle, dv.modalities], [t.stageTitle, dv.stages], [t.difficultyTitle, dv.difficulties]];
   const proofs = language === 'zh'
-    ? [['1.9', '每题平均串联的能力维度'], ['88%', '已登记题目达到 L2 以上'], ['540', '条精选文献记录']]
-    : [['1.9', 'capabilities woven into each task'], ['88%', 'of authored tasks at L2 or above'], ['540', 'curated source records']];
+    ? [['1.9', '每题平均串联的能力维度'], ['75%', '题目难度达到 L2 以上'], ['540', '条精选文献记录']]
+    : [['1.9', 'capabilities woven into each task'], ['75%', 'of tasks at L2 or above'], ['540', 'curated source records']];
 
   return <section className="section soft" id="diversity">
     <div className="section-lead"><p className="section-number">03 · DIVERSITY</p><h2>{t.diversityTitle}</h2><p>{t.diversityText}</p></div>
-    <p className="architecture-note">{language === 'zh' ? '统计范围：第 1–280 题组采用已登记题目元数据，第 281–500 题组采用逐题文献规划；难度仅统计已登记的 1,120 道题。' : 'Scope: sets 1–280 use authored task metadata and sets 281–500 use the per-task literature plan; difficulty covers the 1,120 authored tasks only.'}</p>
     <div className="dv-kpis">{kpis.map(([value, label]) => <div className="dv-kpi" key={label}><strong>{value}</strong><span>{label}</span></div>)}</div>
     <div className="dv-grid">
       <div className="dv-card dv-radar-card">
