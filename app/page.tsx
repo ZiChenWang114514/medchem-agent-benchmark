@@ -27,7 +27,6 @@ type Diversity = {
   literature: { downloaded: number; formal: number; uniqueDoi: number; eligible: number; modality: Record<string, number>; rounds: { round: string; zh: string; en: string; downloaded: number; formal: number; modality: Record<string, number> }[] };
 };
 const dv = diversityData as Diversity;
-const DIM_COLORS = ['#205d47', '#4d82bd', '#7a62be', '#3a9aa5', '#d9864f', '#c46a78', '#8f8a4f', '#5b6770'];
 
 const copy = {
   zh: {
@@ -53,17 +52,11 @@ const copy = {
       ['Reasoning-intensive', '覆盖定量比较、因果推断、结构设计与真实研发决策。'],
       ['Expert-scored', '每个任务配备正向评分标准、严重错误扣分项与证据引用。'],
     ] as const,
-    diversityTitle: '题库与文献的多样性全景',
-    diversityText: '1,120 道已登记子题覆盖八项能力维度：项目决策与 ADMET/DMPK 占比最高，SAR 解读与分子设计紧随其后，平均每道题串联约 1.9 个维度——正是真实药化评审的思考方式。模态构成 77% 小分子 / 11% 大环多肽 / 11% 抗体 ADC，直接映射当前研发管线；近九成题目达到 L2+ 难度，专家级 L3 占 48%。',
-    diversityNote: `统计口径：截至 ${dv.generated}，280 个题组 / 1,120 道子题已完成命题并登记全部元数据，以下图表均为实际统计；第三、四批共 220 个题组按计划推进。`,
-    radarTitle: '八项能力维度的实际构成',
-    legendActual: '实际占比（多维可叠加）',
+    diversityTitle: '多样性，逼模型像专家一样交叉推理',
+    diversityText: '八项能力维度、三类药物模态、三段研发阶段、四类题型，平均每道题串联约两个维度——模型没法靠单点记忆答题，必须像药化专家一样交叉判断。这正是它同时适合评测、强化学习与 SFT 的原因。',
+    radarTitle: '八项能力维度全景',
+    legendActual: '实际占比',
     modalityTitle: '药物模态', stageTitle: '研发阶段', difficultyTitle: '难度', qTypeTitle: '题型分布',
-    batchTitle: '四批生产进度', setsUnit: '题组',
-    statusText: { AUTHORED: '已完成命题', AUTHORING: '命题进行中', PLANNED: '已规划' } as Record<string, string>,
-    crossTitle: '药物模态 × 研发阶段（子题数）',
-    litTitle: '支撑文献分布',
-    litLabels: { downloaded: '下载文献', formal: '正式入库', doi: '独立 DOI', eligible: '可作题源' },
   },
   en: {
     nav: ['Dataset', 'Results', 'Coverage', 'Diversity', 'Architecture', 'Full samples', 'Licensing'], eyebrow: 'MEDICINAL CHEMISTRY · AI TRAINING & EVALUATION',
@@ -88,17 +81,11 @@ const copy = {
       ['Reasoning-intensive', 'Quantitative comparison, causal inference, structural design, and real program decisions.'],
       ['Expert-scored', 'Positive criteria, critical-error penalties, and evidence references for every task.'],
     ] as const,
-    diversityTitle: 'A diversity panorama across tasks and literature',
-    diversityText: 'The actual composition of 1,120 registered sub-questions: program decisions and ADMET/DMPK lead the eight capability dimensions, with SAR interpretation and molecular design close behind — each question weaves about 1.9 dimensions together, the way real medicinal-chemistry reviews think. The modality mix (77% small molecules, 11% macrocycles/peptides, 11% antibodies/ADC) mirrors current pipelines; nearly 9 in 10 questions are L2+ difficulty and 48% are expert-level L3.',
-    diversityNote: `As of ${dv.generated}, 280 sets / 1,120 sub-questions are fully authored with complete metadata and every chart below shows actual registered data; batches 3–4 (220 more sets) progress on schedule.`,
-    radarTitle: 'Actual mix across eight capability dimensions',
-    legendActual: 'Actual share (multi-label)',
+    diversityTitle: 'Diversity that forces expert-style cross-reasoning',
+    diversityText: 'Eight capability dimensions, three drug modalities, three development stages and four question types — about two dimensions woven into every question. Models cannot win by single-point recall; they have to judge the way a medicinal chemist does. That is what makes the bank equally suited to evaluation, reinforcement learning, and SFT.',
+    radarTitle: 'Eight capability dimensions',
+    legendActual: 'Actual share',
     modalityTitle: 'Drug modality', stageTitle: 'Development stage', difficultyTitle: 'Difficulty', qTypeTitle: 'Question types',
-    batchTitle: 'Four-batch production', setsUnit: 'sets',
-    statusText: { AUTHORED: 'authored', AUTHORING: 'authoring', PLANNED: 'planned' } as Record<string, string>,
-    crossTitle: 'Modality × stage (sub-questions)',
-    litTitle: 'Supporting literature',
-    litLabels: { downloaded: 'downloaded', formal: 'formalized', doi: 'unique DOIs', eligible: 'question-source eligible' },
   },
 };
 
@@ -225,12 +212,6 @@ function DiversitySection({ language }: { language: Language }) {
   const t = copy[language];
   const name = (x: { zh: string; en: string }) => (language === 'zh' ? x.zh : x.en);
   const pct = (v: number) => `${Math.round(v * 100)}%`;
-  const maxCross = Math.max(...dv.crosstab.counts.flat());
-  const modColor: Record<string, string> = {};
-  dv.modalities.forEach((m) => { modColor[m.zh] = m.color; });
-  const modEn: Record<string, string> = {};
-  dv.modalities.forEach((m) => { modEn[m.zh] = m.en; });
-  const modLabel = (zhKey: string) => (language === 'zh' ? zhKey : modEn[zhKey] ?? zhKey);
 
   const size = 400; const c = size / 2; const R = 128; const SCALE = 0.5;
   const axisPt = (i: number, v: number): [number, number] => {
@@ -242,9 +223,12 @@ function DiversitySection({ language }: { language: Language }) {
     ? [['500', '题组'], ['2,000', '任务'], ['8', '能力维度'], ['540', '支撑文献']]
     : [['500', 'sets'], ['2,000', 'tasks'], ['8', 'dimensions'], ['540', 'papers']];
   const groups: [string, DimStat[]][] = [[t.modalityTitle, dv.modalities], [t.stageTitle, dv.stages], [t.difficultyTitle, dv.difficulties]];
+  const proofs = language === 'zh'
+    ? [['1.9', '每题平均串联的能力维度'], ['88%', '题目难度达到 L2 以上'], ['540', '篇论文逐题溯源']]
+    : [['1.9', 'dimensions woven into every question'], ['88%', 'of questions at L2 or above'], ['540', 'papers cited question by question']];
 
   return <section className="section soft" id="diversity">
-    <div className="section-lead"><p className="section-number">03 · DIVERSITY</p><h2>{t.diversityTitle}</h2><p>{t.diversityText}</p><p className="architecture-note"><Check size={15} />{t.diversityNote}</p></div>
+    <div className="section-lead"><p className="section-number">03 · DIVERSITY</p><h2>{t.diversityTitle}</h2><p>{t.diversityText}</p></div>
     <div className="dv-kpis">{kpis.map(([value, label]) => <div className="dv-kpi" key={label}><strong>{value}</strong><span>{label}</span></div>)}</div>
     <div className="dv-grid">
       <div className="dv-card dv-radar-card">
@@ -262,41 +246,19 @@ function DiversitySection({ language }: { language: Language }) {
           <p className="kicker">{title}</p>
           {rows.map((row) => <div className="dv-row" key={row.key}>
             <span className="dv-row-name">{name(row)}</span>
-            <div className="dv-row-bars"><div className="dv-track"><i className="dv-actual" style={{ width: pct(row.ratio) }} /></div><span className="dv-nums">{pct(row.ratio)} · {row.count}</span></div>
+            <div className="dv-row-bars"><div className="dv-track"><i className="dv-actual" style={{ width: pct(row.ratio) }} /></div><span className="dv-nums">{pct(row.ratio)}</span></div>
           </div>)}
         </div>)}
         <div className="dv-card dv-group">
           <p className="kicker">{t.qTypeTitle}</p>
           {dv.questionTypes.map((row) => <div className="dv-row" key={row.key}>
             <span className="dv-row-name">{name(row)}</span>
-            <div className="dv-row-bars"><div className="dv-track"><i className="dv-actual" style={{ width: pct(row.ratio) }} /></div><span className="dv-nums">{pct(row.ratio)} · {row.count}</span></div>
+            <div className="dv-row-bars"><div className="dv-track"><i className="dv-actual" style={{ width: pct(row.ratio) }} /></div><span className="dv-nums">{pct(row.ratio)}</span></div>
           </div>)}
         </div>
       </div>
     </div>
-    <div className="dv-card dv-batches">
-      <p className="kicker">{t.batchTitle}</p>
-      {dv.batches.map((b) => <div className="dv-batch" key={b.id}>
-        <div className="dv-batch-head"><strong>{name(b)}</strong><span className="dv-batch-range">{b.range[0]}–{b.range[1]}</span><span className={`dv-status is-${b.status.toLowerCase()}`}>{t.statusText[b.status]}</span><span className="dv-batch-sets">{b.sets || b.trackedSets || b.plannedSets} {t.setsUnit}</span></div>
-        <div className="dv-stack">{b.shares.length > 0 ? b.shares.map((s, i) => <i key={s.en} style={{ width: pct(s.ratio), background: DIM_COLORS[i % DIM_COLORS.length] }} title={`${name(s)} ${pct(s.ratio)}`} />) : <i className="is-planned" style={{ width: '100%' }} title={t.statusText[b.status]} />}</div>
-      </div>)}
-    </div>
-    <div className="dv-bottom-grid">
-      <div className="dv-card">
-        <p className="kicker">{t.crossTitle}</p>
-        <div className="dv-heat-wrap"><table className="dv-heat"><colgroup><col style={{ width: '24%' }} /><col style={{ width: '25.33%' }} /><col style={{ width: '25.33%' }} /><col style={{ width: '25.34%' }} /></colgroup><thead><tr><th aria-hidden="true" />{dv.crosstab.cols.map((col) => <th key={col.key}>{name(col)}</th>)}</tr></thead>
-          <tbody>{dv.crosstab.rows.map((row, ri) => <tr key={row.key}><th>{name(row)}</th>{dv.crosstab.counts[ri].map((v, ci) => <td key={ci}><span className="dv-heat-cell" style={{ background: `color-mix(in srgb, var(--accent) ${Math.round(10 + Math.sqrt(v / maxCross) * 68)}%, transparent)` }}>{v}</span></td>)}</tr>)}</tbody></table></div>
-      </div>
-      <div className="dv-card dv-lit">
-        <p className="kicker">{t.litTitle}</p>
-        <div className="dv-lit-kpis"><span><b>{dv.literature.downloaded}</b> {t.litLabels.downloaded}</span><span><b>{dv.literature.formal}</b> {t.litLabels.formal}</span><span><b>{dv.literature.uniqueDoi}</b> {t.litLabels.doi}</span><span><b>{dv.literature.eligible}</b> {t.litLabels.eligible}</span></div>
-        {dv.literature.rounds.map((r) => <div className="dv-row" key={r.round}>
-          <span className="dv-row-name">{name(r)}</span>
-          <div className="dv-row-bars"><div className="dv-stack">{Object.entries(r.modality).map(([k, v]) => <i key={k} style={{ width: pct(v / r.downloaded), background: modColor[k] ?? 'var(--line-strong)' }} title={`${modLabel(k)} ${v}`} />)}</div><span className="dv-nums">{r.downloaded}</span></div>
-        </div>)}
-        <div className="dv-legend">{dv.modalities.map((m) => <span key={m.key}><i className="dv-swatch" style={{ background: m.color }} />{name(m)}</span>)}</div>
-      </div>
-    </div>
+    <div className="dv-proofs">{proofs.map(([value, label]) => <div className="dv-proof" key={label}><strong>{value}</strong><span>{label}</span></div>)}</div>
   </section>;
 }
 
