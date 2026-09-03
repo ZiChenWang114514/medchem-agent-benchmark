@@ -89,18 +89,18 @@ const metrics = [['500', '题组规模 / planned sets'], ['≈2,000', '任务规
 const coverage = [['SAR', '构效关系分析 / structure–activity relationships'], ['SBDD', '结构证据与结合模式 / structural evidence & binding mode'], ['DMPK', '暴露、清除与代谢 / exposure, clearance & metabolism'], ['Lead optimization', '多参数先导优化 / multiparameter optimization'], ['Candidate selection', '候选物优选与提名 / candidate nomination'], ['Experimental design', '竞争假说与判别性实验 / discriminating experiments']];
 const plansByLanguage = {
   zh: [
-    ['付费试评', '20 题组 · 80 个任务 · 含完整评分报告', '¥49,800'],
-    ['标准授权', '100 题组 · 约 400 个任务 · 授权 12 个月', '¥198,000'],
-    ['500 题组项目授权', '约 2,000 个任务 · 授权 24 个月', '¥598,000'],
-    ['训练用途授权', '支持 SFT / 偏好优化 / 强化学习', '¥798,000'],
-    ['独家战略合作', '500 题组项目 + 定制更新与联合共建', '¥1,000,000'],
+    ['付费试评', '20 题组 · 80 个任务 · 含完整评分报告', '价格面议'],
+    ['标准授权', '100 题组 · 约 400 个任务 · 授权 12 个月', '价格面议'],
+    ['500 题组项目授权', '约 2,000 个任务 · 授权 24 个月', '价格面议'],
+    ['训练用途授权', '支持 SFT / 偏好优化 / 强化学习', '价格面议'],
+    ['独家战略合作', '500 题组项目 + 定制更新与联合共建', '价格面议'],
   ],
   en: [
-    ['Paid pilot', '20 sets · 80 tasks · full scoring report', 'USD quote'],
-    ['Standard license', '100 sets · ~400 tasks · 12-month term', 'USD quote'],
-    ['500-set program license', '~2,000 tasks · 24-month term', 'USD quote'],
-    ['Training license', 'SFT / preference optimization / RL', 'USD quote'],
-    ['Exclusive partnership', '500-set program + custom updates & co-development', 'USD quote'],
+    ['Paid pilot', '20 sets · 80 tasks · full scoring report', 'On discussion'],
+    ['Standard license', '100 sets · ~400 tasks · 12-month term', 'On discussion'],
+    ['500-set program license', '~2,000 tasks · 24-month term', 'On discussion'],
+    ['Training license', 'SFT / preference optimization / RL', 'On discussion'],
+    ['Exclusive partnership', '500-set program + custom updates & co-development', 'On discussion'],
   ],
 };
 const workflowRows = {
