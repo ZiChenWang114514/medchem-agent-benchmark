@@ -7,8 +7,8 @@ const geistMono = Geist_Mono({ variable: '--font-geist-mono', subsets: ['latin']
 
 export const metadata: Metadata = {
   title: 'MedChem Agent Benchmark | Expert Medicinal Chemistry Data for Scientific AI',
-  description: '500 expert-written medicinal chemistry task sets — ~2,000 connected tasks and ~10,000 rubric entries grounded in real drug-discovery evidence. Built for model training, reinforcement learning, and private evaluation of scientific agents.',
-  openGraph: { title: 'MedChem Agent Benchmark', description: '500 expert-written task sets · ~2,000 connected tasks · ~10,000 rubric entries — real drug-discovery problems for scientific AI agents.', type: 'website' },
+  description: 'A medicinal chemistry benchmark program designed for 500 task sets and ~2,000 connected tasks, with Pilot20 results from 14 evaluated systems.',
+  openGraph: { title: 'MedChem Agent Benchmark', description: 'A 500-set benchmark design · ~2,000 connected tasks · Pilot20 results from 14 evaluated systems.', type: 'website' },
   twitter: { card: 'summary', title: 'MedChem Agent Benchmark', description: 'Real drug-discovery problems, built to train and test scientific agents.' },
 };
 

@@ -11,7 +11,7 @@ type Question = { question_id: string; number: number; title: string; dimension:
 type QuestionSet = { set_id: string; set_number: number; title: string; doi: string; questions: Question[] };
 const sets = questionData as QuestionSet[];
 
-type DimStat = { key: string; zh: string; en: string; count: number; ratio: number; target: number | null; gap: number | null; status: string };
+type DimStat = { key: string; zh: string; en: string; count: number; ratio: number };
 type ModStat = DimStat & { color: string };
 type Diversity = {
   generated: string;
@@ -19,8 +19,8 @@ type Diversity = {
   radar: DimStat[];
   modalities: ModStat[];
   stages: DimStat[];
-  difficulties: DimStat[];
   questionTypes: { key: string; zh: string; en: string; count: number; ratio: number }[];
+  literature: { collected_records: number; eligible_records: number; unique_doi: number };
 };
 const dv = diversityData as Diversity;
 
@@ -28,79 +28,79 @@ const copy = {
   zh: {
     nav: ['数据概览', '评测结果', '能力覆盖', '数据多样性', '架构与评测', '完整样例', '合作方案'], eyebrow: 'MEDICINAL CHEMISTRY · AI TRAINING & EVALUATION',
     title: '用真实药物研发难题，\n训练和检验科学智能体',
-    intro: '由药物化学专家逐题命题、逐项制定评分标准：500 个完整题组、约 2,000 个环环相扣的任务、约 10,000 条评分细则，全部锚定真实药物研发文献与实验数据，可直接用于模型训练、偏好优化、强化学习与内部评测。',
+    intro: '面向 500 个题组、约 2,000 个关联任务与约 10,000 条评分细则构建的药物化学数据产品。题目与逐题文献规划均来自真实药物研发材料，可用于模型训练、偏好优化、强化学习与内部评测。',
     cta: '洽谈合作与授权', samples: '查看两个完整题组', proof: '14 个「模型 × Coding Agent」组合已完成同一批 20 个题组的试测，每份作答均经三轮独立匿名评分。',
     resultsTitle: 'Pilot20：14 个系统同场实测', resultsText: '同一批 20 个题组，同一套评分标准。每个系统完成 20 份有效作答，每份作答由 Luna High 独立评分三次，取单题中位数汇总。柱形为得分率，满分 800 分。',
     scoreRate: '得分率', higherBetter: '越高越好', medianNote: '单题三次评分取中位数后汇总',
-    overviewTitle: '不是选择题，而是真实的研发判断', overviewText: '任务基于真实化合物系列、结构证据与 DMPK 数据构建，要求模型提出可论证的优化方案、甄别相互竞争的解释，并在多重约束下完成候选物决策——这正是药化专家每天的工作。',
+    overviewTitle: '超越选择题，进入真实研发判断', overviewText: '任务基于真实化合物系列、结构证据与 DMPK 数据构建，要求模型提出可论证的优化方案、甄别相互竞争的解释，并在多重约束下完成候选物决策。',
     coverageTitle: '从数据解读到项目决策的完整链条', coverageText: '每个题组包含四个环环相扣的任务：既可拆作独立训练样本，也可串联成一条完整的智能体工作流。',
-    architectureTitle: '榜单上的每一分，都能回溯到原始证据', architectureText: '题目版本、作答环境、模型身份与评分记录全链路留存：任何成绩都可回溯到原始回答、逐条评分依据与完整运行日志，合作方可随时复查。',
+    architectureTitle: '榜单上的每一分，都能追溯到原始证据', architectureText: '题目版本、作答环境、模型身份与评分记录均有保存：成绩可追溯到原始回答、逐条评分依据与运行记录，并可在合作评审中复查。',
     architectureNote: '已公开的 Pilot20 结果：14 个「模型 × Coding Harness」组合全部完成作答，并经三轮独立匿名评分。',
     principlesTitle: '可信度，来自被完整记录的每一步',
     sampleTitle: '两个完整题组，逐字呈现', sampleText: '以下内容完整取自第 7 和第 11 题组：四个任务、全部题干数据、正向评分项、错误扣分项与证据引用，均未删减。', sampleNote: '点击任意题目，展开完整题干与评分细则',
     answer: '完整评分细则', positive: '正向评分项', penalty: '错误扣分项', evidence: '证据',
-    cooperationTitle: '按你的研发目标，选择合作方式', cooperationText: '从小规模付费试评起步，或直接采购完整数据与训练用途授权。所有方案均支持按你的数据字段与格式交付，可出具美元报价并支持美元结算。',
+    cooperationTitle: '按你的研发目标，选择合作方式', cooperationText: '可从小规模付费试评起步，也可洽谈数据与训练用途授权。具体内容、使用权、交付格式与时间写入正式报价单和合同。',
     contactTitle: '让你的模型，先过药化专家这一关', contactText: '欢迎大模型团队、AI 制药公司、训练数据服务商与科研机构联系洽谈。',
     email: '发送合作邮件', github: 'GitHub 项目', sourceLanguage: '', setLabel: '完整题组', tasks: '个任务', footer: 'MedChem Agent Benchmark · Expert-curated data for scientific AI',
     facts: [['14', '参赛系统'], ['20', '题组'], ['60', '次独立评分 / 系统']],
     features: [
-      ['Evidence-grounded', '每道题都锚定真实论文、补充材料、结构数据与实验结果。'],
-      ['Reasoning-intensive', '覆盖定量比较、因果推断、结构设计与真实研发决策。'],
-      ['Expert-scored', '每个任务配备正向评分标准、严重错误扣分项与证据引用。'],
+      ['Evidence-grounded', '题目与逐题规划关联真实论文、补充材料、结构数据与实验结果。'],
+      ['Reasoning-intensive', '覆盖定量比较、竞争解释、结构设计与真实研发决策。'],
+      ['Expert-scored', '评分体系采用正向标准、严重错误扣分项与证据引用。'],
     ] as const,
     diversityTitle: '多样性，逼模型像专家一样交叉推理',
-    diversityText: '500 个题组共 2,000 道任务，覆盖八项能力维度、三类药物模态、三段研发阶段和四类题型。平均每道题串联约两个能力维度，要求模型进行接近药物化学专家的综合判断。',
+    diversityText: '500 题组整体设计覆盖 2,000 道任务、八项能力维度、三类药物模态、三段研发阶段和四类题型。统计由题目元数据与逐题文献规划共同汇总，平均每道任务关联约两个能力维度。',
     radarTitle: '八项能力维度全景',
-    legendActual: '实际占比',
+    legendActual: '整体设计占比',
     modalityTitle: '药物模态', stageTitle: '研发阶段', difficultyTitle: '难度', qTypeTitle: '题型分布',
   },
   en: {
     nav: ['Dataset', 'Results', 'Coverage', 'Diversity', 'Architecture', 'Full samples', 'Licensing'], eyebrow: 'MEDICINAL CHEMISTRY · AI TRAINING & EVALUATION',
     title: 'Real drug-discovery problems, built to train and test scientific agents',
-    intro: 'Written and scored by practicing medicinal chemists: 500 complete task sets, ~2,000 connected tasks, and ~10,000 rubric entries — all grounded in real drug-discovery literature and experimental data. Ready for model training, preference optimization, reinforcement learning, and private evaluation.',
+    intro: 'A medicinal-chemistry data product designed at a scale of 500 task sets, ~2,000 connected tasks, and ~10,000 rubric entries. Tasks and per-task literature plans draw on real drug-discovery sources for model training, preference optimization, reinforcement learning, and private evaluation.',
     cta: 'Discuss licensing & partnership', samples: 'View two full task sets', proof: 'All 14 model × coding-agent combinations completed the same 20 task sets; every answer was scored in three independent blind passes.',
     resultsTitle: 'Pilot20: 14 systems, one playing field', resultsText: 'Same 20 task sets, same rubric. Each system produced 20 valid answers, each independently scored three times by Luna High and aggregated as per-task medians. Bars show the score rate against the 800-point maximum.',
     scoreRate: 'Score rate', higherBetter: 'higher is better', medianNote: 'Aggregated from the median of three scores per task',
     overviewTitle: 'Not multiple choice — real program judgment', overviewText: 'Tasks are built from real compound series, structural evidence, and DMPK data. Models must propose defensible optimization strategies, adjudicate competing explanations, and make candidate decisions under multiple constraints — the work a medicinal chemist does every day.',
     coverageTitle: 'The full chain from data interpretation to project decisions', coverageText: 'Each set contains four interconnected tasks — use them as standalone training examples, or chain them into a complete agent workflow.',
-    architectureTitle: 'Every point on the board traces back to raw evidence', architectureText: 'Task versions, answering environments, model identities, and scoring records are preserved end to end. Any score can be traced back to the raw answer, item-level rubric decisions, and complete run logs — open for partners to inspect at any time.',
+    architectureTitle: 'Every point on the board traces back to raw evidence', architectureText: 'Task versions, answering environments, model identities, and scoring records are preserved. Scores can be traced to raw answers, item-level rubric decisions, and run records for review during a partnership.',
     architectureNote: 'Now public — Pilot20: all 14 model × coding-harness combinations completed the benchmark and three independent anonymized scoring passes.',
     principlesTitle: 'Credibility comes from recording every step',
     sampleTitle: 'Two complete task sets, reproduced in full', sampleText: 'Taken verbatim from Sets 7 and 11: all four tasks, complete prompt data, positive criteria, error penalties, and evidence references — nothing abridged.', sampleNote: 'Expand any task to read the full prompt and scoring rubric',
     answer: 'Complete scoring rubric', positive: 'Positive criteria', penalty: 'Error penalties', evidence: 'Evidence',
-    cooperationTitle: 'Choose the engagement that fits your program', cooperationText: 'Start with a paid pilot, or license the complete dataset with training rights. Every plan can be delivered against your own schema and format, with USD pricing and invoicing available.',
+    cooperationTitle: 'Choose the engagement that fits your program', cooperationText: 'Start with a paid pilot or discuss data and training rights. The exact content, usage rights, delivery format, and schedule are documented in the formal quote and agreement.',
     contactTitle: 'Put your model in front of a medicinal chemistry expert', contactText: 'We welcome inquiries from foundation-model teams, AI drug-discovery companies, training-data providers, and research organizations.',
     email: 'Email for partnership', github: 'GitHub project', sourceLanguage: 'Full task content is presented in its original Chinese. Professional English adaptation is available with licensed delivery.', setLabel: 'Full task set', tasks: 'tasks', footer: 'MedChem Agent Benchmark · Expert-curated data for scientific AI',
     facts: [['14', 'systems'], ['20', 'sets'], ['60', 'blind judgements / system']],
     features: [
-      ['Evidence-grounded', 'Every task is anchored in real papers, supplementary data, molecular structures, and experimental results.'],
-      ['Reasoning-intensive', 'Quantitative comparison, causal inference, structural design, and real program decisions.'],
-      ['Expert-scored', 'Positive criteria, critical-error penalties, and evidence references for every task.'],
+      ['Evidence-grounded', 'Tasks and per-task plans link to papers, supplementary data, molecular structures, and experimental results.'],
+      ['Reasoning-intensive', 'Quantitative comparison, competing explanations, structural design, and real program decisions.'],
+      ['Expert-scored', 'The scoring format combines positive criteria, critical-error penalties, and evidence references.'],
     ] as const,
     diversityTitle: 'Diversity that forces expert-style cross-reasoning',
-    diversityText: 'The full 500-set, 2,000-task collection spans eight capability dimensions, three drug modalities, three development stages and four question types. About two capabilities are woven into each task, requiring integrated judgment close to that of a medicinal chemist.',
+    diversityText: 'The 500-set design spans 2,000 tasks, eight capability dimensions, three drug modalities, three development stages, and four question types. The figures combine task metadata with the per-task literature plan; each task links about two capabilities on average.',
     radarTitle: 'Eight capability dimensions',
-    legendActual: 'Actual share',
+    legendActual: 'Full-design share',
     modalityTitle: 'Drug modality', stageTitle: 'Development stage', difficultyTitle: 'Difficulty', qTypeTitle: 'Question types',
   },
 };
 
-const metrics = [['500', '题组 / task sets'], ['≈2,000', '任务 / tasks'], ['≈10,000', '评分项 / rubric entries'], ['14', '模型组合 / model systems']];
+const metrics = [['500', '题组规模 / planned sets'], ['≈2,000', '任务规模 / planned tasks'], ['≈10,000', '评分项规模 / planned rubrics'], ['14', '实测系统 / evaluated systems']];
 const coverage = [['SAR', '构效关系分析 / structure–activity relationships'], ['SBDD', '结构证据与结合模式 / structural evidence & binding mode'], ['DMPK', '暴露、清除与代谢 / exposure, clearance & metabolism'], ['Lead optimization', '多参数先导优化 / multiparameter optimization'], ['Candidate selection', '候选物优选与提名 / candidate nomination'], ['Experimental design', '竞争假说与判别性实验 / discriminating experiments']];
 const plansByLanguage = {
   zh: [
     ['付费试评', '20 题组 · 80 个任务 · 含完整评分报告', '¥49,800'],
     ['标准授权', '100 题组 · 约 400 个任务 · 授权 12 个月', '¥198,000'],
-    ['完整内部授权', '全部 500 题组 · 授权 24 个月', '¥598,000'],
+    ['500 题组项目授权', '约 2,000 个任务 · 授权 24 个月', '¥598,000'],
     ['训练用途授权', '支持 SFT / 偏好优化 / 强化学习', '¥798,000'],
-    ['独家战略合作', '完整数据 + 定制更新与联合共建', '¥1,000,000'],
+    ['独家战略合作', '500 题组项目 + 定制更新与联合共建', '¥1,000,000'],
   ],
   en: [
     ['Paid pilot', '20 sets · 80 tasks · full scoring report', 'USD quote'],
     ['Standard license', '100 sets · ~400 tasks · 12-month term', 'USD quote'],
-    ['Complete internal license', 'All 500 sets · 24-month term', 'USD quote'],
+    ['500-set program license', '~2,000 tasks · 24-month term', 'USD quote'],
     ['Training license', 'SFT / preference optimization / RL', 'USD quote'],
-    ['Exclusive partnership', 'Complete data + custom updates & co-development', 'USD quote'],
+    ['Exclusive partnership', '500-set program + custom updates & co-development', 'USD quote'],
   ],
 };
 const workflowRows = {
@@ -214,14 +214,14 @@ function DiversitySection({ language }: { language: Language }) {
     const a = -Math.PI / 2 + (i * 2 * Math.PI) / dv.radar.length;
     return [c + Math.cos(a) * R * (v / SCALE), c + Math.sin(a) * R * (v / SCALE)];
   };
-  const poly = (key: 'ratio' | 'target') => dv.radar.map((d, i) => axisPt(i, d[key] ?? 0).join(',')).join(' ');
+  const poly = () => dv.radar.map((d, i) => axisPt(i, d.ratio).join(',')).join(' ');
   const kpis = language === 'zh'
-    ? [['500', '题组'], ['2,000', '任务'], ['8', '能力维度'], ['540', '文献记录']]
-    : [['500', 'sets'], ['2,000', 'tasks'], ['8', 'dimensions'], ['540', 'source records']];
-  const groups: [string, DimStat[]][] = [[t.modalityTitle, dv.modalities], [t.stageTitle, dv.stages], [t.difficultyTitle, dv.difficulties]];
+    ? [['500', '题组规模'], ['2,000', '任务规模'], ['8', '能力维度'], [String(dv.literature.eligible_records), '合格文献记录']]
+    : [['500', 'planned sets'], ['2,000', 'planned tasks'], ['8', 'dimensions'], [String(dv.literature.eligible_records), 'eligible source records']];
+  const groups: [string, DimStat[]][] = [[t.modalityTitle, dv.modalities], [t.stageTitle, dv.stages]];
   const proofs = language === 'zh'
-    ? [['1.9', '每题平均串联的能力维度'], ['75%', '题目难度达到 L2 以上'], ['540', '条精选文献记录']]
-    : [['1.9', 'capabilities woven into each task'], ['75%', 'of tasks at L2 or above'], ['540', 'curated source records']];
+    ? [['1.9', '每题平均关联的能力维度'], [String(dv.literature.unique_doi), '个唯一 DOI'], [String(dv.literature.collected_records), '条已收集文献记录']]
+    : [['1.9', 'capabilities linked per task'], [String(dv.literature.unique_doi), 'unique DOIs'], [String(dv.literature.collected_records), 'collected source records']];
 
   return <section className="section soft" id="diversity">
     <div className="section-lead"><p className="section-number">03 · DIVERSITY</p><h2>{t.diversityTitle}</h2><p>{t.diversityText}</p></div>
@@ -232,7 +232,7 @@ function DiversitySection({ language }: { language: Language }) {
         <svg className="dv-radar" viewBox="-124 -10 648 420" aria-hidden="true">
           {[0.1, 0.2, 0.3, 0.4, 0.5].map((level) => <polygon key={level} className="dv-radar-ring" points={dv.radar.map((_, i) => axisPt(i, level).join(',')).join(' ')} />)}
           {dv.radar.map((_, i) => { const [x, y] = axisPt(i, SCALE); return <line key={i} className="dv-radar-spoke" x1={c} y1={c} x2={x} y2={y} />; })}
-          <polygon className="dv-radar-actual" points={poly('ratio')} />
+          <polygon className="dv-radar-actual" points={poly()} />
           {dv.radar.map((d, i) => { const [x, y] = axisPt(i, SCALE + 0.075); return <text key={d.key} className="dv-radar-label" x={x} y={y} textAnchor={x > c + 8 ? 'start' : x < c - 8 ? 'end' : 'middle'} dominantBaseline="middle">{language === 'zh' ? d.zh : d.en}</text>; })}
         </svg>
         <div className="dv-legend"><span><i className="dv-swatch is-actual" />{t.legendActual}</span></div>

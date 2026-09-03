@@ -1,6 +1,6 @@
 # MedChem Agent Benchmark
 
-A bilingual product site for an expert-curated medicinal chemistry reasoning dataset: 500 task sets, approximately 2,000 connected tasks, and approximately 10,000 rubric entries.
+A bilingual product site for a medicinal chemistry reasoning benchmark program designed at a scale of 500 task sets and approximately 2,000 connected tasks.
 
 The public site includes full examples from task sets 7 and 11, licensing options, and partnership contact details.
 
